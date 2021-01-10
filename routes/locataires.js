@@ -16,6 +16,10 @@ router.post('/createLocataire',locataireController.createLocataire);
 
 router.get('/getLocataire/:id',locataireController.getLocataire);
 
+
+// Read (locataire) GET all
+
+router.get('/getAllLocataire/',locataireController.getAllLocataire);
 // UPDATE (locataire) PATCH
 router.patch('/updateLocataire/:id',locataireController.updateLocataire);
 

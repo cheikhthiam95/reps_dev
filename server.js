@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // Routes  
-app.use('/api/locataire', locataireRoutes)
+app.use('/api/locataire/', locataireRoutes)
 
 
 mongoose.connect(
@@ -17,8 +17,8 @@ mongoose.connect(
 }
 ).then(() => {
     // Commment démarrer l'écoute de notre server
-    app.listen(3000, () => {
-        console.log(' Le serveur écoute au port 3000')
+    app.listen(5000, () => {
+        console.log(' Le serveur écoute au port 5000')
     });
 }).catch((err) => {
     console.log(err)
