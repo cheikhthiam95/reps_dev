@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
  const LocataireSchema =  new mongoose.Schema({
-    nome:{
+    nom:{
         type: String,
         required: true
     },
