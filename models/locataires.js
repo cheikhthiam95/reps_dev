@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
  const LocataireSchema =  new mongoose.Schema({
-    nome:{
+    nom:{
         type: String,
         required: true
     },
@@ -12,8 +12,8 @@ const mongoose = require('mongoose');
       },
        pays:{
            type:String,
-           required: false,
-           default:false
+           required: false
+          
        }
     }
  );
