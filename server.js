@@ -1,12 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const locataireRoutes = require('./routes/locataires');
+const reservationRoutes = require('./routes/reservations');
 const app = express();
 
 app.use(express.json());
 
 // Routes  
 app.use('/api/locataire', locataireRoutes)
+app.use('/api/reservation', reservationRoutes)
 
 
 mongoose.connect(
