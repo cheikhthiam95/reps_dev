@@ -14,11 +14,15 @@ router.post('/createReservation',reservationController.createReservation);
 
 router.get('/getReservation/:id',reservationController.getReservation);
 
-// UPDATE (reservation) PATCH
-router.patch('/updateReservation:id',reservationController.updateReservation);
+// Read (All reservation) GET
 
-// // Delete (locataire) DELETE
-// router.delete('/deleteReservation:id',reservationController.deleteReservation);
+router.get('/getAllReservation/',reservationController.getAllReservation);
+
+// UPDATE (reservation) PATCH
+router.patch('/updateReservation/:id',reservationController.updateReservation);
+
+// Delete (reservation) DELETE
+ router.delete('/deleteReservation/:id',reservationController.deleteReservation);
 
 
 
