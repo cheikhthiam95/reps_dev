@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose')
 const locataireRoutes = require('./routes/locataires');
+const reservationRoutes = require('./routes/reservations');
 const app = express();
 
 //charger les fichiers qui sont dans le répertoire public :
@@ -9,7 +10,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Routes  
-app.use('/api/locataire/', locataireRoutes); 
+app.use('/api/locataire/', locataireRoutes)
+
+app.use('/api/reservation', reservationRoutes)
 
 var port = process.env.PORT || 5001;
 mongoose.connect(
