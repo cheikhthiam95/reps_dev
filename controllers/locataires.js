@@ -19,9 +19,21 @@ const createLocataire = (req, res) => {
     })
 
 };
+const getAllLocataire = (req, res) => {
+    Locataires.find((err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ message: 'Error on  Getting locataire' })
+        } else {
+
+            res.status(200).json({ result })
+        }
+    })
+
+};
 
 const getLocataire = (req, res) => {
-
+    Locataires.
     Locataires.find({ _id: req.params.id }, (err, result) => {
         if (err) {
             console.error(err);
@@ -63,4 +75,4 @@ if(locataireUpdate){
 
 };
 
-module.exports = { createLocataire, getLocataire, updateLocataire, deleteLocataire };
+module.exports = { createLocataire, getLocataire, updateLocataire, deleteLocataire ,getAllLocataire};
