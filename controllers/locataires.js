@@ -3,7 +3,7 @@ const Locataires = require('../models/locataires');
 
 const createLocataire = (req, res) => {
     const locataire = new Locataires({
-        nome: req.body.nom,
+        nom: req.body.nom,
         prenom: req.body.prenom,
         pays: req.body.pays,
 
@@ -33,7 +33,6 @@ const getAllLocataire = (req, res) => {
 };
 
 const getLocataire = (req, res) => {
-    Locataires.
     Locataires.find({ _id: req.params.id }, (err, result) => {
         if (err) {
             console.error(err);
