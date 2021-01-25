@@ -38,7 +38,7 @@ const getReservation = (req, res) => {
 
  };
 
- const getAllReservation = (req, res) => {
+const getAllReservation = (req, res) => {
 
     Reservations.find((err, result) => {
         if (err) {

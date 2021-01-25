@@ -1,4 +1,4 @@
-const Locataires = require("../models/locataires");
+const Hotes = require("../models/hotes");
 // const validation = require("../validation");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -12,11 +12,11 @@ const login = async (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
 
-  await Locataires.findOne({
+  await Hotes.findOne({
     $or: [{ email: username }, { phone: username }],
-  }).then((locataire) => {
-    if (locataire) {
-      bcrypt.compare(password, locataire.password, (err, result) => {
+  }).then((hote) => {
+    if (hote) {
+      bcrypt.compare(password, hote.password, (err, result) => {
         if (err) {
           res.status(500).json({
             message: err,
@@ -24,7 +24,7 @@ const login = async (req, res, next) => {
         }
         if (result) {
           let token = jwt.sign(
-            { first_name: locataire.first_name },
+            { first_name: hote.first_name },
             "VerySecretValue",
             { expiresIn: "1h" }
           );
@@ -39,6 +39,7 @@ const login = async (req, res, next) => {
         }
       });
     } else {
+      
       res.status(500).json("The uer is not found");
     }
   });
@@ -57,7 +58,7 @@ const register = (req, res, next) => {
     } else {
       ///
     }
-    var locataire = new Locataires({
+    var hote = new Hotes({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
@@ -68,14 +69,14 @@ const register = (req, res, next) => {
       country: req.body.country,
     });
     if(req.file){
-      locataire.avatar = req.file.path
+      hote.avatar = req.file.path
     }
 
-    locataire
+    hote
       .save()
       .then(() => {
-        console.log("Locataire creatred");
-        res.status(200).json({ message: "Locataire created" });
+        console.log("hote creatred");
+        res.status(200).json({ message: "hote created" });
       })
       .catch((err) => {
         console.error(err);
@@ -83,75 +84,75 @@ const register = (req, res, next) => {
       });
   });
 };
-const createLocataire = (req, res) => {
-  const { error } = validation.addLocataireValidation(req.body);
+const createHote = (req, res) => {
+  const { error } = validation.addHoteValidation(req.body);
   if (error) {
     res.status(500).send(error);
   } else {
-    let locataire = new Locataires({
+    let hote = new Hotes({
       nom: req.body.nom,
       prenom: req.body.prenom,
       pays: req.body.pays,
     });
    
-    locataire
+    hote
       .save()
       .then(() => {
-        console.log("Locataire créatred");
-        res.status(200).json({ message: "Locataire created" });
+        console.log("Hote créatred");
+        res.status(200).json({ message: "Hote created" });
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).json({ message: "Error on  creatting locataire" });
+        res.status(500).json({ message: "Error on  creatting hote" });
       });
   }
 };
-const getAllLocataire = (req, res) => {
-  Locataires.find((err, result) => {
+const getAllHote = (req, res) => {
+  Hotes.find((err, result) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ message: "Error on  Getting locataire" });
+      res.status(500).json({ message: "Error on  Getting hote" });
     } else {
       res.status(200).json({ result: result, session: req.session });
     }
   });
 };
 
-const getLocataire = (req, res) => {
+const getHote = (req, res) => {
   Locataires.find({ _id: req.params.id }, (err, result) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ message: "Error on  Getting locataire" });
+      res.status(500).json({ message: "Error on  Getting hote" });
     } else {
       res.status(200).json({ result });
     }
   });
 };
-const updateLocataire = async (req, res) => {
-  const locataireUpdate = await Locataires.findOneAndUpdate(
+const updateHote = async (req, res) => {
+  const hoteUpdate = await Hotes.findOneAndUpdate(
     { _id: req.params.id },
     {
       $set: {
-        nome: req.body.nome,
+        nom: req.body.nom,
         prenom: req.body.prenom,
         pays: req.body.pays,
       },
     },
     { new: true }
   );
-  if (locataireUpdate) {
-    console.log(locataireUpdate);
+  if (hoteUpdate) {
+    console.log(hoteUpdate);
     res.status(200).json({ message: "Update successfully" });
   } else {
     res.status(500).json({ message: "Error while updating" });
   }
 };
-const deleteLocataire = async (req, res) => {
-  const locataireUpdate = await Locataires.findOneAndDelete({
+const deleteHote = async (req, res) => {
+  const hoteUpdate = await Hotes.findOneAndDelete({
     _id: req.params.id,
   });
-  if (locataireUpdate) {
-    console.log(locataireUpdate);
+  if (hoteUpdate) {
+    console.log(hoteUpdate);
     res.status(200).json({ message: "Delete successfully" });
   } else {
     res.status(500).json({ message: "Error while delettting" });
@@ -159,11 +160,11 @@ const deleteLocataire = async (req, res) => {
 };
 
 module.exports = {
-  createLocataire,
-  getLocataire,
-  updateLocataire,
-  deleteLocataire,
-  getAllLocataire,
+  createHote,
+  getHote,
+  updateHote,
+  deleteHote,
+  getAllHote,
   register,
   login,
 };
