@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose')
 const dotenvi = require('dotenv').config();
 const locataireRoutes = require('./routes/locataires');
-const hoteRoutes = require('./routes/hote');
 const reservationRoutes = require('./routes/reservations');
+const habitationsRoutes = require('./routes/habitations')
 const session = require('express-session')
 const expressValidator = require('express-session')
 const parseurl = require('parseurl')
@@ -36,11 +36,10 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Routes midlleware  
-app.use('/api/hote/', hoteRoutes)
+
 app.use('/api/locataire/', locataireRoutes)
-
 app.use('/api/reservation', reservationRoutes)
-
+//app.use('api/habitation')
 var port = process.env.PORT || 5001;
 mongoose.connect(process.env.DB_CONNECT, {
     useNewUrlParser: true,

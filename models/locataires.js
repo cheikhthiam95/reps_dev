@@ -11,6 +11,10 @@ const LocataireSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type : String, 
+    required: true
+  },
   country: {
     type: String,
     required: false,
@@ -40,6 +44,7 @@ const LocataireSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  
 });
 
 module.exports = Locataires = mongoose.model("Locataires", LocataireSchema);

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
  const Reservationschema =  new mongoose.Schema({
-    hebergement:{
+    TypeHabitation:{
         type: String,
         required: true
     },
@@ -10,11 +10,11 @@ const mongoose = require('mongoose');
         type:Date,
         required: true
       },
-      dateDepart: {
+    dateDepart: {
         type:Date,
         required: true
       },
-      nombrePersonne: {
+    nombrePersonne: {
         type:Number,
         required: true
       }
@@ -24,4 +24,3 @@ const mongoose = require('mongoose');
 
 
  module.exports = Reservations = mongoose.model('Reservations', Reservationschema);
- 
