@@ -27,25 +27,6 @@ router.post('/login',body('username').isEmail(),
 body('password').isLength({ min: 5 }),locataireController.login);
 // Read (locataire) GET all
 router.get('/getAllLocataire/',authenticate,accessAdmin.roleAdmin,locataireController.getAllLocataire);
-// router.get('/getAllLocataire/',authenticate, (req, res)=>{
-//     const {role} = req.user;
-//     console.log(req.user)
-//     if (role !== 'admin'){
-//         return res.json({
-//             message : "Access forbiden"
-//         });
-//     }
-//     else{
-//        try {
-//             locataireController.getAllLocataire(req, res, () => {
-//               console.log('ok');
-//             });
-//           } catch (errr) {
-//             console.log(errr);
-//           }
-
-//     }
-// });
 // UPDATE (locataire) PATCH
 router.patch('/updateLocataire/:id',authenticate,locataireController.updateLocataire);
 

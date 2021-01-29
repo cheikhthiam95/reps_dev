@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const dotenvi = require('dotenv').config();
 const locataireRoutes = require('./routes/locataires');
 const reservationRoutes = require('./routes/reservations');
-const habitationsRoutes = require('./routes/habitations')
+const habitationsRoutes = require('./routes/habitations');
 const session = require('express-session')
 const expressValidator = require('express-session')
 const parseurl = require('parseurl')
@@ -35,10 +35,13 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
+
+
 // Routes midlleware  
 
 app.use('/api/locataire/', locataireRoutes)
 app.use('/api/reservation', reservationRoutes)
+app.use('/api/habitation/', habitationsRoutes)
 //app.use('api/habitation')
 var port = process.env.PORT || 5001;
 mongoose.connect(process.env.DB_CONNECT, {
