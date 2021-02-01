@@ -9,7 +9,7 @@ const {body} = require('express-validator');
 const role = require('../middleware/roles');
 const router = express.Router();
 
-router.post('/createHabitation',authenticate,habitationControllers.createHabitation); 
+router.post('/createHabitation',authenticate,accessAdmin.roleAdminHote,habitationControllers.createHabitation); 
 
 router.get('/getHabitation/:id',authenticate,habitationControllers.getHabitation);
 
@@ -18,9 +18,9 @@ router.get('/getHabitation/:id',authenticate,habitationControllers.getHabitation
 router.get('/getAllReservation/',authenticate,habitationControllers.getAllHabitation);
 
 // UPDATE (reservation) PATCH
-router.patch('/updateReservation/:id',authenticate,habitationControllers.updateHabitation);
+router.patch('/updateReservation/:id',authenticate,accessAdmin.roleAdminHote,habitationControllers.updateHabitation);
 
 // Delete (reservation) DELETE
- router.delete('/deleteReservation/:id',authenticate,habitationControllers.deleteHabitation);
+ router.delete('/deleteReservation/:id',authenticate,accessAdmin.roleAdminHote,habitationControllers.deleteHabitation);
 
 module.exports = router;
