@@ -40,7 +40,7 @@ const roleLocataire =  async (req, res, next) =>
 const roleAdminHote = async (req, res, next) => {
   const { role } = req.user;
   console.log(req.user)
-  if (role !== 'admin' || role !== "hote")
+  if (role == "locataire")
   {
     return res.json({
           message : "Access forbiden"
@@ -48,10 +48,11 @@ const roleAdminHote = async (req, res, next) => {
   }
   next()
 }
+
 module.exports = {
   roleAdmin, 
   roleHote,
   roleLocataire,
-  roleAdminHote
-
+  roleAdminHote,
+ 
 };
