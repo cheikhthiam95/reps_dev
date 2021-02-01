@@ -23,5 +23,5 @@ const mongoose = require('mongoose');
  );
 
 
- module.exports = Reservations = mongoose.model('Reservations', Reservationschema);;
+ module.exports = Reservations = mongoose.model('Reservations', Reservationschema);
  
