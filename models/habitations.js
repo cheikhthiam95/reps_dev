@@ -12,7 +12,6 @@ const mongoose = require('mongoose');
       },
     NChambres :{
       type:Number,
-      required: true
     },
     Equipements: {
         type:String,
@@ -27,7 +26,7 @@ const mongoose = require('mongoose');
         required: true
       },
     DateDispo: {
-        type:Date,
+        type:String,
         required: true
     },
     Adresse: {

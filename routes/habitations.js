@@ -11,4 +11,16 @@ const router = express.Router();
 
 router.post('/createHabitation',authenticate,habitationControllers.createHabitation); 
 
+router.get('/getHabitation/:id',authenticate,habitationControllers.getHabitation);
+
+// Read (All reservation) GET
+
+router.get('/getAllReservation/',authenticate,habitationControllers.getAllHabitation);
+
+// UPDATE (reservation) PATCH
+router.patch('/updateReservation/:id',authenticate,habitationControllers.updateHabitation);
+
+// Delete (reservation) DELETE
+ router.delete('/deleteReservation/:id',authenticate,habitationControllers.deleteHabitation);
+
 module.exports = router;

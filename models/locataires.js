@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const LocataireSchema = new mongoose.Schema({
-    first_name: {
+  first_name: {
     type: String,
     required: true,
   },
