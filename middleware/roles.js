@@ -48,11 +48,23 @@ const roleAdminHote = async (req, res, next) => {
   }
   next()
 }
+const roleAdminLocataire = async (req, res, next) => {
+  const { role } = req.user;
+  console.log(req.user)
+  if (role == "hote")
+  {
+    return res.json({
+          message : "Access forbiden"
+       });
+  }
+  next()
+}
 
 module.exports = {
   roleAdmin, 
   roleHote,
   roleLocataire,
   roleAdminHote,
+  roleAdminLocataire
  
 };

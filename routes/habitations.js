@@ -15,7 +15,7 @@ router.get('/getHabitation/:id',authenticate,habitationControllers.getHabitation
 
 // Read (All reservation) GET
 
-router.get('/getAllReservation/',authenticate,habitationControllers.getAllHabitation);
+router.get('/getAllReservation/',authenticate,accessAdmin.roleAdmin,habitationControllers.getAllHabitation);
 
 // UPDATE (reservation) PATCH
 router.patch('/updateReservation/:id',authenticate,accessAdmin.roleAdminHote,habitationControllers.updateHabitation);
