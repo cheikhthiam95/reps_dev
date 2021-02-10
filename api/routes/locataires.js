@@ -1,12 +1,12 @@
 const express = require('express');
 const locataireController  = require('../controllers/locataires')
-const authenticate = require('../middleware/authorize') 
+const authenticate = require('../middlewares/authorize') 
 //const authorize = require('../middleware/authorize') 
-const accessAdmin = require("../middleware/roles") 
-const upload = require('../middleware/upload') 
+const accessAdmin = require("../middlewares/roles") 
+const upload = require('../middlewares/upload') 
 
 const {body} = require('express-validator');
-const role = require('../middleware/roles');
+const role = require('../middlewares/roles');
 // Initialisation des routes
 
 const router = express.Router();

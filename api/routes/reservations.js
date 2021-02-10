@@ -1,7 +1,7 @@
 const express = require('express');
 const reservationController  = require('../controllers/reservations')
-const authenticate = require('../middleware/authorize') 
-const accessAdmin = require("../middleware/roles") 
+const authenticate = require('../middlewares/authorize') 
+const accessAdmin = require("../middlewares/roles") 
 
 // Initialisation des routes
 
