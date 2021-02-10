@@ -21,10 +21,11 @@ router.post('/createLocataire', locataireController.createLocataire);
 // Read (locataire) GET
 
 router.get('/getLocataire/:id',locataireController.getLocataire);
+router.post('/login',locataireController.login);
 
-router.post('/login',body('username').isEmail(),
-// password must be at least 5 chars long
-body('password').isLength({ min: 5 }),locataireController.login);
+// router.post('/login',body('username').isEmail(),
+// // password must be at least 5 chars long
+// body('password').isLength({ min: 5 }),locataireController.login);
 // Read (locataire) GET all
 router.get('/getAllLocataire/',authenticate,accessAdmin.roleAdmin,locataireController.getAllLocataire);
 // UPDATE (locataire) PATCH

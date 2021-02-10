@@ -19,8 +19,8 @@ const login = async (req, res, next) => {
     if (user) {
       bcrypt.compare(password, user.password, (err, result) => {
         if (err) {
-          res.status(500).json({
-            message: err,
+          res.status(200).json({
+            message: err,type:1
           });
         }
         if (result) {
@@ -29,18 +29,25 @@ const login = async (req, res, next) => {
               config.secret,
             { expiresIn: "1h" }
           );
-          res.status(400).json({
+          res.status(200).json({
             message: "Loging sucessfuly",
-            token,
+            session:{
+              user: result,
+              token: token
+            },
+          
+            type:0
           });
         } else {
-          res.status(500).json({
+          res.status(200).json({
             message: "The password is not correcte",
+            type:1
           });
         }
       });
     } else {
-      res.status(500).json("The uer is not found");
+      res.status(401).json( {message:"The user is not found",type:1});
+
     }
   });
 };
@@ -79,12 +86,14 @@ const register = (req, res, next) => {
         console.log("Locataire creatred");
         res.status(200).json({ 
           message: "Locataire created",
-          data: user
+          data: user,
+          type:0
+         
       });
       })
       .catch((err) => {
         console.error(err);
-        res.status(500).json({ message: err });
+        res.status(200).json({ message: err , type:1});
       });
   });
 };

@@ -13,7 +13,7 @@ const LocataireSchema = new mongoose.Schema({
   },
   role: {
     type : String, 
-    required: true
+    required: false
   },
   country: {
     type: String,
