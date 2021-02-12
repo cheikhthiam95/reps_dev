@@ -43,6 +43,10 @@ export default {
     };
   },
   mounted() { 
+    this.$warehouse.set('user', { name:'Marie Doe' }, 1000)
+ 
+// Get current user value
+this.$warehouse.get('user')
   },
 
   methods: {
@@ -51,13 +55,17 @@ export default {
     },
        async login(user) {
          console.log(user,'voici les données reçu du formulaire');
-        // const response = await $axios.$get(
-        //       "http://localhost:5000/api/locataire/login",
-        //       {
-        //         username: "m.thiam@gmail.com",
-        //         password: "123456",
-        //       }
-        //     );
+
+         try {
+             const response = await this.$axios.$post(
+              "http://localhost:5000/api/users/login",
+             user
+            );
+            console.log(response)
+         } catch (error) {
+           console.log(error)
+         }
+      
 
       // const response = await axios.post(
       //   "http://localhost:5000/api/locataire/login", user

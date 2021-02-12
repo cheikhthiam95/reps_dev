@@ -1,33 +1,60 @@
-const User = require('../models/user');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const User = require("../models/user");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { NotAuthorizedError } = require("../Errors");
-const {controller, ACTION} = require('./utils/controller')
-const { roleConverter } = require('../config/roles');
-require('dotenv').config();
+const { controller, ACTION } = require("./utils/controller");
+const { roleConverter } = require("../config/roles");
+require("dotenv").config();
 
+exports.login = controller(async ({ body: { username, password } }) => {
+    const errorMsg = "Creditentials Incorrect 0";
+    const errorMsg1 = "Creditentials Incorrect 1";
 
-exports.login = controller(async ({body: {username, password}}) => {
-    const errorMsg = "Creditentials Incorrect";
     
-    const user = await User.findOne({username}, {password: true, username: true, nom: true, prenom: true, role: true});
-    if(!user) throw new NotAuthorizedError(errorMsg);
-    
-    const result = await bcrypt.compare(password, user.password);
-    if(!result) throw new NotAuthorizedError(errorMsg);
+    const user = await User.findOne(
+      { username },
+      { password: true, firsName: true,lastName: true, role: true }
+    );  
+    if (!user) throw new NotAuthorizedError(errorMsg);  
+    const result = await bcrypt.compare(password, user.password); 
+    if (!result) throw new NotAuthorizedError(errorMsg1);
     return {
-            username: user.username,
-            nom: user.nom,
-            prenom: user.prenom,
-            userId: user._id,
-            role: roleConverter(user.role),
-            token: jwt.sign({userId: user._id}, process.env.SECRET_AUTH_TOKEN, {expiresIn: "24h"})
-        };
-}, ACTION.RESULT);
+      username: user.username,
+      lastName: user.lastName,
+      firstName: user.firstName,
+      userId: user._id,
+      role: roleConverter(user.role),
+      token: jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: "24h",
+      }),
+    };
+  }, ACTION.RESULT); 
+ 
+exports.newUser_old = controller(async ({ user, body }) => {
+  const password = body.password;
 
-exports.newUser = controller(async ({user, body}) => {
-    const password = await bcrypt.hash(body.password, 30);
-    const newUser = new User({...body, password, createdBy: user._id});
-    await newUser.save();
-    return newUser
+  // const password = await bcrypt.hash(body.password, 30);
+  console.log(User);
+  const newUser = new User({ ...body, password, createdBy: body._id });
+  await newUser.save();
+
+  return newUser;
 }, ACTION.CREATE);
+
+exports.newUser = controller(async ({ user, body }) => {
+  const hashedPass =  await bcrypt.hash(body.password, 10);
+     const newUser = new User({
+      ...body,
+      password: hashedPass,
+      createdBy: body._id,
+    });
+    if (body.file) {
+      newUser.avatar = body.file.path;
+    }
+
+    await newUser.save() 
+  return newUser;
+  
+
+}, ACTION.CREATE);
+ 

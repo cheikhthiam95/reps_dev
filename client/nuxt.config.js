@@ -34,7 +34,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    ['vue-warehouse/nuxt',
+      // {
+      //   vuex: true,
+      //   plugins: [
+      //     'store/plugins/expire',
+      //     'store/plugins/defaults'
+      //   ],
+      //   storages: [
+      //     'store/storages/localStorage',
+      //     'store/storages/cookieStorage'
+      //   ]
+      // }
+    ]
 
   ],
   axios: {

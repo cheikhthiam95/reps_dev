@@ -1,7 +1,5 @@
 const { connectMongoDb } = require("./config/db");
-const { authUser } = require("./middlewares/auth");
-const locataireRoutes = require("./routes/locataires"); 
-const reservationRoutes = require("./routes/reservations");
+const { authUser } = require("./middlewares/auth"); 
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { json } = require("body-parser");
@@ -42,8 +40,6 @@ app.use(express.static("public"));
 const API_PREFIX = "api";
 
 // Opened Routes which doesn't need Authentification token
-app.use(`/${API_PREFIX}/users`, usersRouter);
-app.use(`/${API_PREFIX}/locataire/`, locataireRoutes);
-app.use(`/${API_PREFIX}/reservation`, reservationRoutes);
+app.use(`/${API_PREFIX}/users`, usersRouter); 
 
 module.exports = app;

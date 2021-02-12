@@ -7,18 +7,18 @@ const userSchemas = Schema({
   username: { ...requiredString, unique: true },
   email: {
     ...requiredString,
-    validate: emailValidator,
+    validate: emailValidator,unique: true
     },
   password: { ...requiredString, select: false },
-  nom: {...requiredString, required: true},
-  prenom: {...requiredString, required: true},
+  lastName: {...requiredString, required: true},
+  firstName: {...requiredString, required: true},
   role: {
     type: String,
     required: true,
     enum: Object.values(ROLES).map(({name}) => name)
   },
   createdBy: {
-    required: true,
+    required: false,
     type: Schema.Types.ObjectId,
     ref: "User",
   }

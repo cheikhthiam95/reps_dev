@@ -25,4 +25,4 @@ exports.ROLES = {
         value: 64,
     }}
 
-    exports.roleConverter = role => role;
+    exports.roleConverter = ROLES => ROLES;

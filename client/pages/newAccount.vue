@@ -12,10 +12,10 @@
       <form @submit.prevent="newAccount(user)">
             <h2 class="text-center">New account</h2>       
             <div class="form-group">
-                <input type="text" v-model="user.first_name" class="form-control" placeholder="first_name" required="required">
+                <input type="text" v-model="user.firstName" class="form-control" placeholder="first_name" required="required">
             </div>
              <div class="form-group">
-                <input type="text" v-model="user.last_name" class="form-control" placeholder="last_name" required="required">
+                <input type="text" v-model="user.lastName" class="form-control" placeholder="last_name" required="required">
             </div>
             <div class="form-group">
                 <input type="text" v-model="user.email" class="form-control" placeholder="email" required="required">
@@ -29,9 +29,9 @@
             <div class="form-group">
                 <input type="text" v-model="user.city" class="form-control" placeholder="city" required="required">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input type="file" class="form-control-file" placeholder="avatar" required="required">
-            </div>
+            </div> -->
             <div class="form-group">
                 <input type="password" class="form-control" v-model="user.password" placeholder="Password" required="required">
             </div>
@@ -60,13 +60,14 @@ export default {
     };
   },
   mounted() {
-    console.log("Allô chiekh", process.env.BaseUrl);
-    axios.get("http://localhost:5000/api/locataire/getAllLocataire");
+    // console.log("Allô chiekh", process.env.BaseUrl);
+    // axios.get("http://localhost:5000/api/locataire/getAllLocataire");
   },
 
   methods: {
        async newAccount(user) {
          console.log(user,'voici les données reçu du formulaire');
+         
         // const response = await $axios.$get(
         //       "http://localhost:5000/api/locataire/login",
         //       {
@@ -74,18 +75,26 @@ export default {
         //         password: "123456",
         //       }
         //     );
-
-      const response = await axios.post(
-        "http://localhost:5000/api/locataire/register", user
+      try { const response = await axios.post(
+        "http://localhost:5000/api/users/newUser", {...user,role:'admin',username:user.email}
          
-      );
-      this.alert = response.data
-      if(response && response.data.message && response.data.message.type == 0)
-      {
-        this.$store.commit("setSession",response.data.session)
+      );console.log("La réponse du server",response)
+        
+      } catch (error) {
+        console.log("La réponse du server",error)
+        
       }
-      console.log(response, 'Et le alert est', this.$store.state.session);
-    //   this.$router.push("/login")
+     
+
+      
+
+    //   this.alert = response.data
+    //   if(response && response.data.message && response.data.message.type == 0)
+    //   {
+    //     this.$store.commit("setSession",response.data.session)
+    //   }
+    //   console.log(response, 'Et le alert est', this.$store.state.session);
+    // //   this.$router.push("/login")
     },
   },
 };

@@ -16,7 +16,8 @@ exports.ForbiddenError = class ForbiddenError extends ApiError {
 }
 
 exports.NotAuthorizedError = class NotAuthorizedError extends ApiError {
-    constructor(message) {
+    
+    constructor(message) { 
         super(message || 'User Not authorized to access to this ressource', 401);
     }
 }

@@ -1,6 +1,5 @@
-const locataireRoutes = require("./routes/locataires");
-const app = require("./app")
-const reservationRoutes = require("./routes/reservations");
+ 
+const app = require("./app") 
 // const habitationsRoutes = require('./routes/habitations');
 const session = require("express-session");
 const parseurl = require("parseurl");  

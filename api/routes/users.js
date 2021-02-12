@@ -6,6 +6,8 @@ const { authUser, authRole } = require('../middlewares/auth');
 const { ROLES } = require('../config/roles')
 
 router.post('/login', login);
-router.post('/newuser', authUser, authRole(ROLES.admin), newUser);
+router.post('/newuser',newUser);
+// router.post('/newuser', authUser, authRole(ROLES.admin), newUser);
+// // 
 
 module.exports = router;
