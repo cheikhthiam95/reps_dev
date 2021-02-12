@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        La liste des users 
+    
 
     <div>
          <table class="table">
