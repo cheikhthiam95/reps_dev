@@ -18,6 +18,7 @@
     "dotenv": "^8.2.0",
     "nuxt": "^2.14.12",
     "store": "^2.0.12",
+    "vue-toastification": "^1.7.11",
     "vue-warehouse": "^2.2.0"
   },
   "devDependencies": {

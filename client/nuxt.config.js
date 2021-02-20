@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'client',
@@ -27,7 +28,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/bootstrap.js'
+    '~/plugins/bootstrap.js',
+    '~/plugins/axios.js'
+
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,13 +46,14 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
+    "vue-toastification/nuxt",
     ['vue-warehouse/nuxt',
       // {
       //   vuex: true,
       //   plugins: [
       //     'store/plugins/expire',
       //     'store/plugins/defaults'
-      //   ],
+      //   ], 
       //   storages: [
       //     'store/storages/localStorage',
       //     'store/storages/cookieStorage'
@@ -58,6 +63,7 @@ export default {
 
   ],
 
+ 
   module: {
     rules: [
       {

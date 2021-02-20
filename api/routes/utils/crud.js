@@ -22,6 +22,10 @@ module.exports = (Collection, {noCreate, noCreateMany, noList, noGet, noSearch, 
     const search = controller(({params}) => {
         return Collection.find({$text: { $search: params.query }});
     }, ACTION.RESULT);
+    const findAllBy = controller(({params}) => {
+        return Collection.find({id_hote: params.id });
+    }, ACTION.RESULT);
+
 
     const count = controller(() => Collection.count(), ACTION.RESULT);
 
@@ -45,6 +49,7 @@ module.exports = (Collection, {noCreate, noCreateMany, noList, noGet, noSearch, 
 
     !noList && router.get('/', list);
     !noCount && router.get('/count', count);
+    !noList && router.get('/findAllBy/:id', findAllBy);
     !noSearch && router.get('/search/:query', search);
     !noGet && router.get('/:id', get);
     !noCreate && router.post('/', create);

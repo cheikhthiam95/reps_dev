@@ -1,7 +1,7 @@
 exports.ROLES = {
-    contributor: {
-        label: "Contributor",
-        name: "contributor",
+    hote: {
+        label: "hote",
+        name: "hote",
         value: 128,
     },
     admin: {

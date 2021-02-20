@@ -30,7 +30,10 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from "axios"; 
+
+// Then, on the setup method
+ 
 export default {
   layout: 'login',
   data() {
@@ -43,10 +46,13 @@ export default {
     };
   },
   mounted() { 
-    this.$warehouse.set('user', { name:'Marie Doe' }, 1000)
- 
+
+   
+    if(this.$store.state.session == {})
+    this.$toast.error("Allô")                                                                                                                               
 // Get current user value
 this.$warehouse.get('user')
+// this.$axios.onError(e => Promise.reject(e.response.data))
   },
 
   methods: {
@@ -56,14 +62,19 @@ this.$warehouse.get('user')
        async login(user) {
          console.log(user,'voici les données reçu du formulaire');
 
-         try {
+         try {  
              const response = await this.$axios.$post(
-              "http://localhost:5000/api/users/login",
+              "/users/login",
              user
             );
             console.log(response)
+            this.$store.commit('setSession',response)
+             this.$warehouse.set('session', response, 1000) 
+            console.log(this.$store.state.session,'le session en cours session');
+            this.$router.push('/users')
+
          } catch (error) {
-           console.log(error)
+           console.log('ici',error)
          }
       
 

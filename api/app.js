@@ -6,6 +6,7 @@ const { json } = require("body-parser");
 const express = require("express");
 const session = require("express-session");
 const parseurl = require("parseurl"); 
+const errorMiddleware = require("./middlewares/errors")
 const app = express();
 app.use(
   session({
@@ -29,6 +30,8 @@ app.use(function (req, res, next) {
 });
 // All App Routers
 const usersRouter = require("./routes/users");
+const habitatRouter = require("./routes/habitats");
+
 
 connectMongoDb();
 mongoose.set("toJSON", { virtuals: true });
@@ -41,5 +44,9 @@ const API_PREFIX = "api";
 
 // Opened Routes which doesn't need Authentification token
 app.use(`/${API_PREFIX}/users`, usersRouter); 
+app.use(`/${API_PREFIX}/habitats`, habitatRouter); 
+
+app.use(errorMiddleware)
+
 
 module.exports = app;

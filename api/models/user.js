@@ -12,6 +12,11 @@ const userSchemas = Schema({
   password: { ...requiredString, select: false },
   lastName: {...requiredString, required: true},
   firstName: {...requiredString, required: true},
+  address: {...requiredString, required: true},
+  city: {...requiredString, required: true},
+  telephone: {...requiredString, required: true},
+  pays: {...requiredString, required: true},
+
   role: {
     type: String,
     required: true,

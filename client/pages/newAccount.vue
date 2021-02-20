@@ -24,7 +24,7 @@
                 <input type="text" v-model="user.phone" class="form-control" placeholder="phone" required="required">
             </div> 
             <div class="form-group">
-                <input type="text" v-model="user.country" class="form-control" placeholder="country" required="required">
+                <input type="text" v-model="user.country" class="fo rm-control" placeholder="country" required="required">
             </div>
             <div class="form-group">
                 <input type="text" v-model="user.city" class="form-control" placeholder="city" required="required">

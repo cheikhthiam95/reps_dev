@@ -1,22 +1,17 @@
 <template lang="">
     <div>
     
-
-    <div>
-         <table class="table">
-            <tr v-for="user in users" :key="user.id">
-                <td>
-                {{user.lastName}}
-                </td>
-                <td>
-                {{user.firstName}}
-                </td>
-                <td>
-                {{user.id}}
-                </td>
-            </tr>
-        </table>
+      <div class="card-columns">
+        <div  v-for="user in users" :key="user.id" class="card" style="width:300px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">{{user.lastName}}</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-yellow" @click="reserver(user)">Reserver</a>
+  </div>
+</div>
     </div>
+      </div>
 
     </div>
 </template>
@@ -27,6 +22,7 @@ export default {
       users: {},
     };
   },
+  
   mounted() {
     this.getUsers();
   },
@@ -39,6 +35,15 @@ export default {
         console.log(error);
       }
     },
+        async reserver(user) {
+        console.log('Réservercalled',user)
+        const response = await this.$axios.$get("/users/"+user.id);
+        console.log(response);
+        if(response && response.id){
+          this.$router.push('/users/'+response.id)
+        }
+     
+    }
   },
 };
 </script>
