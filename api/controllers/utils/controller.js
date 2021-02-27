@@ -14,6 +14,7 @@ exports.controller = (cb, resultAction = undefined) => async (req,res,next) => {
             case ACTION.INFORM:
                 return res.status(200).end()
             case ACTION.RESULT:
+                    console.log("Le resulte est ::::::::::::::::::::::::",result);
                 return res.json(result)
             default:
                 return result;

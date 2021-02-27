@@ -16,6 +16,8 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.3",
     "dotenv": "^8.2.0",
+    "hooper": "^0.3.4",
+    "jquery": "^3.5.1",
     "nuxt": "^2.14.12",
     "store": "^2.0.12",
     "vue-toastification": "^1.7.11",

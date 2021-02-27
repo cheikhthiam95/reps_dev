@@ -3,6 +3,8 @@ const { requiredString } = require("./utils/customSchemaType");
 
 const habitatSchemas = Schema({
   id_hote: { ...requiredString },
+  name: { ...requiredString },
+  description: { ...requiredString },
   superficie: { ...requiredString, select: false },
   nombrePiece: { ...requiredString, select: false },
   pays: {...requiredString},

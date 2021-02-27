@@ -12,20 +12,20 @@
     <form @submit.prevent="login(user)">
         <h2 class="text-center">Log in</h2>       
         <div class="form-group">
-            <input type="text" v-model="user.username" class="form-control" placeholder="Username" required="required">
+            <input type="text" v-model="user.username" class="form-control" placeholder="Nom d'utilisateur" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" v-model="user.password" placeholder="Password" required="required">
+            <input type="password" class="form-control" v-model="user.password" placeholder="Mot de passe " required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </div>
         <div class="clearfix">
-            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-            <a href="#" class="float-right">Forgot Password?</a>
+            <label class="float-left form-check-label"><input type="checkbox"> Se souvenir de moi</label>
+            <a href="#" class="float-right">Mot de passe oublié?</a>
         </div>        
     </form>
-    <p class="text-center"><a @click="newAccount">Create an Account</a></p>
+    <p class="text-center"><a @click="newAccount">Créer un nouveau compte</a></p>
 </div>
   </div>
 </template>
@@ -70,8 +70,27 @@ this.$warehouse.get('user')
             console.log(response)
             this.$store.commit('setSession',response)
              this.$warehouse.set('session', response, 1000) 
-            console.log(this.$store.state.session,'le session en cours session');
+            console.log(this.$store.state.session,'le session en cours sessiddddddddddddddddddddddddddddon');
+            if(response && response.userId){
+            switch (response.role){
+                case "admin":
             this.$router.push('/users')
+            break;
+            case "hote":
+            this.$router.push('/hotes/'+response.userId)
+            break;
+
+            case "locataire":
+            this.$router.push('/locataires')
+            break;
+
+            default:
+              
+            this.$router.push('/users')
+                  
+              }
+              
+            }
 
          } catch (error) {
            console.log('ici',error)
