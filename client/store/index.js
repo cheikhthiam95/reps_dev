@@ -1,6 +1,6 @@
 export const state = () => ({
-  session: {
-  },
+  session: {},
+  isLogged : false,
   currentHote:{},
   currentHabitat:{},
 
@@ -14,5 +14,8 @@ export const mutations = {
   },
   setCurrentHabitat(state, habitat) {
     state.currentHabitat = habitat;
+  },
+  logged(state, isLogged) {
+    state.isLogged = isLogged;
   }
 };

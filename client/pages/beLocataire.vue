@@ -1,6 +1,8 @@
 <template lang="">
   <div>
+    <validation :motif="monmotif"></validation>
     <new-user :role="role" :state-destination="stateDestination" :text="text" :redirect-to="redirectTo"></new-user>
+    
   </div>
 </template>
 <script>  
@@ -12,6 +14,7 @@ export default {
       role:"locataire",
       stateDestination:"currentLocatare",
       redirectTo:"locataire",
+      monmotif:"Amitié",
       text:{
         title:"Devenir un Locataire"
       }

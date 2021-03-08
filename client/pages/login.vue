@@ -69,7 +69,9 @@ this.$warehouse.get('user')
             );
             console.log(response)
             this.$store.commit('setSession',response)
-             this.$warehouse.set('session', response, 1000) 
+            this.$store.commit('logged',true)
+            console.log('IsLogged',this.$store.state.isLogged);
+            this.$warehouse.set('session', response, 1000) 
             console.log(this.$store.state.session,'le session en cours sessiddddddddddddddddddddddddddddon');
             if(response && response.userId){
             switch (response.role){
