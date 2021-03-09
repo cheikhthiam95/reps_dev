@@ -14,15 +14,15 @@
         <a class="p-2 text-dark" href="#">Enterprise</a>
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a> -->
-        <a class="p-2 text-dark" href="">Hébergement</a>
+        <b class="p-2 text-dark "> <b-icon icon="person-circle"></b-icon>  {{ this.$warehouse.get("session").firstName  }} {{this.$warehouse.get("session").lastName }}</b>
+        
       </nav>
-      <!-- <a class="btn btn-outline-primary" href="#">Sign up</a> -->
-      <b
-        >{{ this.$store.state.session.fistName }}
-        {{ this.$store.state.session.lastName }}</b
-      >
+       <NuxtLink to="/login" class="btn btn-outline-dark"  v-if="!$warehouse.get('isConnected')" >Se connecter</NuxtLink>
+       <a v-else class="btn btn-outline-dark" @click="logout()"> Se déconnecter</a>
+      <b> 
+        </b>
     </div>
-    <div
+    <!-- <div
       class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow"
     >
       <div class="rows">
@@ -45,7 +45,7 @@
           </b-form>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="container">
       <Nuxt />
@@ -92,9 +92,25 @@
 </template>
 
 <script>
+import { BIcon, BIconArrowUp } from 'bootstrap-vue'
+
 export default {
-    // middleware: ['auth', 'stats']
-}
+  components: {
+    BIcon,
+    BIconArrowUp
+  },
+  // middleware: ['authenticated', 'stats'],
+  mounted() {
+    console.log("ALLLLLLLLLLLLLLLLLLLLLÖ", this.$store.state.session);
+  },
+  methods: {
+    logout() {
+      this.$router.push('/login')
+      this.$warehouse.set("isConnected", false);
+      this.$warehouse.set("session", {});
+    },
+  },
+};
 </script>
 <style>
 html {

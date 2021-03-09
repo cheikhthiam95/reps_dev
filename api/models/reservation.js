@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const { requiredString } = require("./utils/customSchemaType");  
 
 const reservationSchemas = Schema({
-  id_hote: { ...requiredString },
+  id_locataire: { ...requiredString },
   id_habitat: { ...requiredString },
   periode: { ...requiredString }
 });

@@ -31,7 +31,7 @@ app.use(function (req, res, next) {
 // All App Routers
 const usersRouter = require("./routes/users");
 const habitatRouter = require("./routes/habitats");
-const reservationRouter = require("./routes/habitats");
+const reservationRouter = require("./routes/reservations");
 
 
 
@@ -47,11 +47,9 @@ const API_PREFIX = "api";
 // Opened Routes which doesn't need Authentification token
 app.use(`/${API_PREFIX}/users`, usersRouter); 
 app.use(`/${API_PREFIX}/habitats`, habitatRouter); 
-app.use(`/${API_PREFIX}/reservation`, reservationRouter); 
+app.use(`/${API_PREFIX}/reservations`, reservationRouter); 
 
 
 
 app.use(errorMiddleware)
-
-
 module.exports = app;

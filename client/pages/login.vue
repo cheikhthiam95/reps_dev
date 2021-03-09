@@ -69,29 +69,12 @@ this.$warehouse.get('user')
             );
             console.log(response)
             this.$store.commit('setSession',response)
-            this.$store.commit('logged',true)
-            console.log('IsLogged',this.$store.state.isLogged);
-            this.$warehouse.set('session', response, 1000) 
+            this.$store.commit('logged',true) 
+            this.$warehouse.set('session', response, 10000) 
+            this.$warehouse.set('isConnected', true, 10000) 
             console.log(this.$store.state.session,'le session en cours sessiddddddddddddddddddddddddddddon');
             if(response && response.userId){
-            switch (response.role){
-                case "admin":
-            this.$router.push('/users')
-            break;
-            case "hote":
-            this.$router.push('/hotes/'+response.userId)
-            break;
-
-            case "locataire":
-            this.$router.push('/locataires')
-            break;
-
-            default:
-              
-            this.$router.push('/users')
-                  
-              }
-              
+              this.$router.push('/'+response.role+'s/'+response.userId)                  
             }
 
          } catch (error) {

@@ -1,6 +1,7 @@
 <template lang="">
     <div>
-        <b>Le bolde  {{users}} le motif est : {{motif}}</b>
+        <b class="text-yellow">Le bolde  {{users}} le motif est : {{motif}}</b>
+          <h2>Example heading <b-badge>New</b-badge></h2>
     </div>
 </template>
 <script>

@@ -1,4 +1,6 @@
 const Habitat = require("../models/habitat"); 
+const Reservation = require("../models/reservation"); 
+
 const { controller, ACTION } = require("./utils/controller"); 
 
 exports.newHabitat = controller(async ({ user, body }) => {
@@ -10,4 +12,11 @@ exports.newHabitat = controller(async ({ user, body }) => {
 
   await newHabitat.save();
   return newHabitat;
+}, ACTION.CREATE);
+
+exports.newReservation = controller(async ({ body }) => {
+  console.log('le user',reservation, 'Le body pour la réservvation',body);
+  const newReservation = new Reservation(body); 
+  await newReservation.save();
+  return newReservation;
 }, ACTION.CREATE);
