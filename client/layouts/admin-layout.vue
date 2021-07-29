@@ -3,7 +3,7 @@
 
     <div class="mt-3"> </div>
 
-    <div id="navbar" class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-1 border-bottom box-shadow">
+    <div id="navbar" class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-1 border-bottom box-shadow mb-4">
         <h5 class="my-0 mr-md-auto font-weight-normal">
             <img style="height: 49px; width: 76px" src="~/assets/images/logo1_V1.png" />
         </h5>
@@ -13,7 +13,7 @@
             </b-button>
         </h5>
 
-        <nav class="my-2 my-md-0 mr-md-3" v-if="!$warehouse.get('isConnected')">
+        <nav class="my-2 my-md-0 mr-md-3" v-if="$warehouse.get('isConnected')">
             <b class="p-2 text-dark ">
                 <b-icon icon="person-circle"></b-icon> {{ this.$warehouse.get("session").firstName  }} {{this.$warehouse.get("session").lastName }}
             </b>
@@ -26,25 +26,7 @@
 
     </div>
 
-    <div id="cadre" class="d-flex flex-column flex-md-row align-items-center p-2 px-md-3 mb-3 bg-white border-bottom box-shadow">
-        <div class="rows">
-            <div class="col-12 offset-2">
-                <b-form inline>
-                    <div class="form-group">
-                        <b-form-datepicker v-model="value" :min="min" :max="max" locale="en"></b-form-datepicker>
-
-                    </div>
-
-                    <div class="form-group ml-3 mr-3">
-                        <b-form-datepicker v-model="value" :min="min" :max="max" locale="en"></b-form-datepicker>
-
-                    </div>
-
-                    <b-button variant="yellow">Rechercher</b-button>
-                </b-form>
-            </div>
-        </div>
-    </div>
+ 
 
     <div class="container">
         <Nuxt />

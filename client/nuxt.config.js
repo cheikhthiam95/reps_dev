@@ -13,6 +13,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script : [
+     { src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbDx2dVOi_VRx7H5jCpUv4LeMZZn9siqo&libraries=places"},
+     { src: "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyDbDx2dVOi_VRx7H5jCpUv4LeMZZn9siqo"}
+
     ]
   },
 
@@ -79,7 +84,7 @@ export default {
     icons: true,
   },
   axios: {
-    baseURL: 'http://localhost:5000/api', // Used as fallback if no runtime config is provided
+    baseURL: 'http://localhost:5001/api', // Used as fallback if no runtime config is provided
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

@@ -17,13 +17,13 @@
             <input type="telephone" class="form-control" v-model="locataire.telephone" placeholder="telephone" required="required">
         </div>
            <div class="form-group">
-            <input type="text" class="form-control" v-model="locataire.address" placeholder="address" required="required">
+            <input type="text" class="form-control" v-model="locataire.adresse" placeholder="adresse" required="required">
         </div>
             <div class="form-group">
             <input type="text" class="form-control" v-model="locataire.city" placeholder="ville" required="required">
         </div>
             <div class="form-group">
-            <input type="text" class="form-control" v-model="locataire.pays" placeholder="pays" required="required">
+            <input type="text" class="form-control" v-model="locataire.country" placeholder="country" required="required">
         </div>
             <div class="form-group">
             <input type="password" class="form-control" v-model="locataire.password" placeholder="password" required="required">
@@ -40,64 +40,60 @@
 </div>
   </div>
 </template>
+
 <script>
-import axios from "axios";
-
-// Then, on the setup method
-
 export default {
-  layout: "login",
-  data() {
-    return {
-      locataire: {},
-      alert: {
-        type: null,
-        message: "",
-      },
-    };
-  },
-  mounted() {
-    if (this.$store.state.session == {}) this.$toast.error("Allô");
-    // Get current locataire value
-    this.$warehouse.get("locataire");
-    // this.$axios.onError(e => Promise.reject(e.response.data))
-  },
-
-  methods: {
-    async register(locataire) {
-      console.log(locataire, "voici les données reçu du formulaire");
-
-      try {
-        const response = await this.$axios.$post("/users/newUser", {
-          ...locataire,
-          role: "locataire",
-          username: locataire.email,
-        });
-        console.log(response);
-        if (response && response.id) {
-          this.$store.commit("setCurrentHote", response);
-          console.log("Voici le current hote", this.$store.state.currentHote);
-
-          this.$router.push("/locataire/" + response.id);
-        }
-      } catch (error) {
-        console.log("ici", error);
-      }
-
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/locataire/login", locataire
-
-      // );
-      // this.alert = response.data
-      // if(response && response.data.message && response.data.message.type == 0)
-      // {
-      //   this.$store.commit("setSession",response.data.session)
-      // }
-      // console.log(response, 'Et le alert est', this.$store.state.session);
-      // this.$router.push("/locataire")
+    data() {
+        return {
+            habitats: {},
+            number: 0,
+        };
     },
-  },
+
+    mounted() {
+        this.gethabitats();
+        this.gethabitatsReserved();
+    },
+    methods: {
+        async gethabitatsReserved() {
+            try {
+                this.number = await this.$axios.$get("/reservations/count");
+                console.log(this.number);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async gethabitats() {
+            try {
+                this.habitats = await this.$axios.$get("/habitats/");
+                console.log(this.habitats);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async reserver(habitat) {
+            console.log("Réservercalled", habitat);
+            const args = {
+                id_locataire: "9999999999999999999",
+                id_habitat: habitat.id,
+                periode: "du  12 au 20",
+            };
+
+            const response = await this.$axios.$post(
+                "/reservations/newReservation/",
+                args
+            );
+            console.log(response);
+            console.log("La réponse de addReservation est : ", response);
+            this.gethabitatsReserved();
+            if (response && response.id) {
+                // this.$router.push('/habitats/'+response.id)
+                console.log("La réponse de addReservation est : ", response);
+            }
+        },
+    },
 };
 </script>
+
 <style lang="">
 </style>

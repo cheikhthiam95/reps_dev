@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { requiredString } = require("./utils/customSchemaType");
+const { requiredString , requiredObject } = require("./utils/customSchemaType");
 const { emailValidator } = require('./utils/validators');
 const { ROLES } = require('../config/roles');
 
@@ -12,11 +12,12 @@ const userSchemas = Schema({
   password: { ...requiredString, select: false },
   lastName: {...requiredString, required: true},
   firstName: {...requiredString, required: true},
-  address: {...requiredString, required: true},
-  city: {...requiredString, required: true},
+  addresse: {...requiredObject, required: true}, 
   telephone: {...requiredString, required: true},
-  pays: {...requiredString, required: true},
+  avatar: {type: Object,
+    required: false},
 
+   
   role: {
     type: String,
     required: true,

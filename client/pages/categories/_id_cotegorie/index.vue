@@ -3,7 +3,7 @@
     <new-habitat>
     </new-habitat>
     <div class="card-columns">
-        {{number}}
+        {{this.$route.params.id_cotegorie}}
         <div v-for="habitat in habitats" :key="habitat.id" class="card" style="width:300px">
             <img class="card-img-top" src="img_avatar1.png" alt="Card image">
             <div class="card-body">
@@ -20,7 +20,8 @@
 
 <script>
 export default {
-    layout:'user-layout',
+  layout:'admin-layout',
+
 
     middleware:'loadOptions',
     data() {
@@ -30,9 +31,8 @@ export default {
         };
     },
 
-    mounted() {
-        this.gethabitats();
-        this.gethabitatsReserved();
+    mounted() { 
+        this.gethabitats(); 
     },
     methods: {
         async gethabitatsReserved() {
@@ -44,8 +44,9 @@ export default {
             }
         },
         async gethabitats() {
+ 
             try {
-                this.habitats = await this.$axios.$get("/habitats/");
+                this.habitats = await this.$axios.$get("/habitats/findAllBy/categorieId/"+this.$route.params.id_cotegorie);
                 console.log(this.habitats);
             } catch (error) {
                 console.log(error);

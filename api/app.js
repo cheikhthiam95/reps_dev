@@ -32,6 +32,8 @@ app.use(function (req, res, next) {
 const usersRouter = require("./routes/users");
 const habitatRouter = require("./routes/habitats");
 const reservationRouter = require("./routes/reservations");
+const categorieRouter = require("./routes/categories");
+
 
 
 
@@ -48,6 +50,8 @@ const API_PREFIX = "api";
 app.use(`/${API_PREFIX}/users`, usersRouter); 
 app.use(`/${API_PREFIX}/habitats`, habitatRouter); 
 app.use(`/${API_PREFIX}/reservations`, reservationRouter); 
+app.use(`/${API_PREFIX}/categories`, categorieRouter); 
+
 
 
 

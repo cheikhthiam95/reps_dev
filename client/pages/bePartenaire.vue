@@ -11,7 +11,7 @@ export default {
     return {
       role:"hote",
       stateDestination:"currentHote",
-      redirectTo:"hote",
+      redirectTo:"hotes",
       text:{
         title:"Devenir un partenaire"
       }

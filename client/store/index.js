@@ -3,6 +3,8 @@ export const state = () => ({
   isLogged : false,
   currentHote:{},
   currentHabitat:{},
+  categories:[],
+
 
 });
 export const mutations = {
@@ -17,5 +19,8 @@ export const mutations = {
   },
   logged(state, isLogged) {
     state.isLogged = isLogged;
+  },
+  SetCategories(state, categories) {
+    state.categories = categories;
   }
 };

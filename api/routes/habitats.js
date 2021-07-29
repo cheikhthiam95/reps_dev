@@ -6,6 +6,8 @@ const { authUser, authRole } = require('../middlewares/auth');
 const { ROLES } = require('../config/roles')
 
 router.post('/newHabitat', newHabitat);
+
+
 // router.post('/newuser', authUser, authRole(ROLES.admin), newUser);
 // // 
 

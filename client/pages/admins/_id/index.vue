@@ -80,15 +80,27 @@
 </template>
 <script>
 export default {
+    layout:'admin-layout',
+
   data() {
     return {
      
     };
   },
+  mounted(){
+      if (!this.checkingAccessRight()) {
+      this.$router.push('/')  
+    }
+  },
   methods: {
     goTo(args) {
       this.$router.push(this.$route.path + "/" + args);
     },
+       checkingAccessRight() {     
+
+              return ((this.$route.params.id == this.$warehouse.get("session").userId) && (this.$warehouse.get("session").role == "admin"))
+    },
+
   },
 };
 </script>

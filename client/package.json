@@ -20,6 +20,8 @@
     "jquery": "^3.5.1",
     "nuxt": "^2.14.12",
     "store": "^2.0.12",
+    "vue-google-autocomplete": "^1.1.1",
+    "vue-google-places": "^0.1.6",
     "vue-toastification": "^1.7.11",
     "vue-warehouse": "^2.2.0"
   },

@@ -75,6 +75,7 @@
 </template>
 <script>
 export default {
+  layout:'user-layout',
   data() {
     return {
       edit_legal_name: false,
