@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h1><button class="btn btn-dark"> Ajouter un habitat</button>     </h1>
+        <h1><button class="btn btn-dark"> Ajouter un habggggitat</button>     </h1>
     </div>
 </template>
 <script>

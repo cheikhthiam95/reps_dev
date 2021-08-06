@@ -99,7 +99,10 @@ export default {
     methods: {
         async register(newUser) {
             (this.password = newUser.password), (this.username = newUser.email);
-            console.log(newUser, "voici les données reçu du formulaire");
+  
+                 newUser.avatar.path = newUser.avatar.$path;
+          delete (newUser.avatar.$path)          
+          console.log(newUser, "voici les données reçu du formulaire");
             try {
                 const response = await this.$axios.$post("/users/newUser", {
                     ...newUser,

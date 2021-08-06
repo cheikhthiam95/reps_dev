@@ -1,7 +1,6 @@
 <template lang="">
 <div>
-    <new-habitat>
-    </new-habitat>
+    <new-habitat/>
     <div class="card-columns">
         {{number}}
         <div v-for="habitat in habitats" :key="habitat.id" class="card" style="width:300px">

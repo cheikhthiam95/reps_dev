@@ -23,8 +23,8 @@ exports.connectMongoDb = async () => {
   try {
     await mongoose
     .connect(
-
-      `mongodb+srv://${process.env.DB_USER_PASS}.mongodb.net/atypikhouse?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`,
+      `mongodb://127.0.0.1:27017`,
+      // `mongodb+srv://${process.env.DB_USER_PASS}.mongodb.net/atypikhouse?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`,
       
       { useNewUrlParser: true, useUnifiedTopology: true }
     )

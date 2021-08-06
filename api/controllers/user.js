@@ -42,6 +42,7 @@ exports.newUser_old = controller(async ({ user, body }) => {
 }, ACTION.CREATE);
 
 exports.newUser = controller(async ({ user, body }) => {
+  console.log(body)
   const hashedPass = await bcrypt.hash(body.password, 10);
   const newUser = new User({
     ...body,

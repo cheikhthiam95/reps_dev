@@ -16,7 +16,7 @@
 
                     <div style="margin-right:2px" v-for="(action,index) in data.item.action" :key="index" :class="action.class" @click="deleteELement(data.item._id)">
                         
-                            <b-icon :icon="action.icon"> </b-icon>
+                            <¯b-icon :icon="action.icon"> </b-icon>
                         
                     </div>
                 </template>
