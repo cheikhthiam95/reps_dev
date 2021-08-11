@@ -1,12 +1,13 @@
 <template>
   <div>
+    <new-habitat />
     <div class="card-columns">
       <div v-for="habitat in habitats" :key="habitat.id" class="card" style="width:300px">
         <img class="card-img-top" src="img_avatar1.png" alt="Card image" />
         <div class="card-body">
           <h4 class="card-title">{{ habitat.name }}</h4>
           <p class="card-text">{{ habitat.description }}</p>
-          <a href="#" class="btn btn-yellow" @click="reserver(habitat)">Reserver</a>
+          <a href="#" class="btn btn-yellow" @click.prevent="reserver(habitat)">Reserver</a>
         </div>
       </div>
       <p v-if="!habitats.length">Vous n'avez aucun habitat disponible</p>
@@ -16,31 +17,26 @@
 
 <script>
 export default {
-  data() {
-    return {
-      habitats: {},
-      number: 0,
-    };
-  },
+  layout: "user-layout",
+  middleware: "loadOptions",
+  data: () => ({
+    habitats: [],
+    number: 0,
+  }),
   created() {
-    this.gethabitats();
-    this.gethabitatsReserved();
+    this.load();
   },
   methods: {
-    async gethabitatsReserved() {
+    async load() {
       try {
-        this.number = await this.$axios.$get("/reservations/count");
-        console.log(this.number);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async gethabitats() {
-      try {
-        this.habitats = await this.$axios.$get("/habitats/");
-        console.log(this.habitats);
-      } catch (error) {
-        console.log(error);
+        const [number, habitats] = await Promise.all([
+          this.$axios.$get("/reservations/count"),
+          this.$axios.$get("/habitats/")
+        ]);
+        this.number = number;
+        this.habitats = habitats;
+      } catch {
+        console.log("ici", error);
       }
     },
     async reserver(habitat) {
@@ -50,11 +46,8 @@ export default {
         id_habitat: habitat.id,
         periode: "du  12 au 20",
       };
-
       const response = await this.$axios.$post("/reservations/newReservation/", args);
-      console.log(response);
       console.log("La réponse de addReservation est : ", response);
-      this.gethabitatsReserved();
       if (response && response.id) {
         // this.$router.push('/habitats/'+response.id)
         console.log("La réponse de addReservation est : ", response);
