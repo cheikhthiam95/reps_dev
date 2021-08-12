@@ -12,10 +12,13 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet',  href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css' },
+      { rel: 'stylesheet',  href: 'https://unpkg.com/swiper/swiper-bundle.min.css' }
     ],
     script : [
      { src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDbDx2dVOi_VRx7H5jCpUv4LeMZZn9siqo&libraries=places"},
+     { src: "https://unpkg.com/swiper/swiper-bundle.min.js"},
      { src: "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyDbDx2dVOi_VRx7H5jCpUv4LeMZZn9siqo"}
 
     ]
@@ -23,17 +26,18 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/scss/bootstrap.scss'
+    // '@/assets/scss/bootstrap.scss'
   ],
 
   js:[
-    '@/assets/js/bootstrap.min.js'
+
+    '@/assets/js/style.js'
     
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/bootstrap.js',
+    // '~/plugins/bootstrap.js',
     '~/plugins/axios.js'
 
 
@@ -49,7 +53,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
+    // 'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     "vue-toastification/nuxt",
     ['vue-warehouse/nuxt',
