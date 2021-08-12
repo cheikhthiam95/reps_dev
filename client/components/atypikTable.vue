@@ -2,28 +2,7 @@
 <div>
     <div class="row">
         <div class="row">
-            <NuxtLink :to="'/admins/'+this.$route.params.id ">Admin</NuxtLink> > {{ this.texts.title }}s
-
-            <br> <br> <br> <br> <br>
-
-            <b-table striped hover :fields="fields" :items="items" responsive="sm">
-
-                <template #cell()="data">
-                    <i>{{ data.value }}</i>
-                </template>
-
-                <template #cell(action)="data">
-
-                    <div style="margin-right:2px" v-for="(action,index) in data.item.action" :key="index" :class="action.class" @click="deleteELement(data.item._id)">
-                        
-                            <¯b-icon :icon="action.icon"> </b-icon>
-                        
-                    </div>
-                </template>
-
-            </b-table>
-
-           
+          
         </div>
     </div>
 </div>
@@ -91,5 +70,4 @@ export default {
     },
 };
 </script>
-
-<style lang=""></style>
+ 

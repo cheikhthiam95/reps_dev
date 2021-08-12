@@ -22,6 +22,4 @@
       }
   };
 </script>
-
-<style lang="">
-</style>
+ 
