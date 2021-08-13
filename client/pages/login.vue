@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="col-4 offset-4 mt-5 card">
-      <form @submit.prevent="login">
+      <form @submit.prevent="submitLogin">
         <h2 class="text-center mb-3 mt-4 text-dark">Connexion</h2>
         <div class="form-group">
           <input
@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import {  createNamespacedHelpers } from 'vuex';
+const { mapActions } = createNamespacedHelpers('auth');
 export default {
   layout: "login",
   data: () => ({
@@ -50,34 +52,21 @@ export default {
       password: undefined,
     },
   }),
-  created() {
-    if (this.$store.state.session == {}) this.$toast.error("Allô");
-    // Get current user value
-    this.$warehouse.get("user");
-    // this.$axios.onError(e => Promise.reject(e.response.data))
-  },
-
   methods: {
-    persistSession(datas) {
-      this.$store.commit("setSession", datas);
-      this.$store.commit("logged", true);
-      this.$warehouse.set("session", datas, 10000);
-      this.$warehouse.set("isConnected", true, 10000);
-    },
-    async login() {
+    ...mapActions(['login']),
+    async submitLogin() {
       try {
-        const response = await this.$axios.$post("/users/login", this.user);
+        const response = await this.login(this.user);
         const { userId, role } = response || {};
         
         if (userId && role && ["admin", "hote", "locataire"].includes(role)) {
-          this.persistSession(response);
-          return this.$router.push(`/${role}/${userId}`);
+          return this.$router.push({name: 'index'});
         }
         
         this.$toast.error("Some informations are missing. We couldn't proceed to the login.");
         console.error('missies userId, role or the role sent is not handled');
       } catch (error) {
-        if(error.response.status == 401) {
+        if(error.response?.status == 401) {
           return this.$toast.error("Nom d'utilisateur ou mot de passe invalide");
         }
         this.$toast.error("An unexpected error has occurred. Please contact the support");
