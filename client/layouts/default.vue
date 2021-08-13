@@ -27,15 +27,15 @@
         <label for="search-bar" class="fas fa-search"></label>
       </form>
     </header>
-
     <!-- header section ends -->
-    <Nuxt />
+    <main>
+      <Nuxt />
+    </main>
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {},
-  methods: {},
-};
-</script>
+<style lang="css" scoped>
+main {
+  margin-top: 74px;
+}
+</style>
