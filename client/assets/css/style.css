@@ -15,7 +15,7 @@
   text-transform: capitalize;
   outline: none; border:none;
   text-decoration: none;
-  transition: all .2s linear;
+  /* transition: all .2s linear; */
 }
 
 *::selection{
