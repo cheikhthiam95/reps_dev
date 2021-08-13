@@ -13,7 +13,7 @@
           return {
               role: "locataire",
               stateDestination: "currentLocatare",
-              redirectTo: "locataires",
+              redirectTo: "locataire",
               monmotif: "Amitié",
               text: {
                   title: "Devenir un Locataire"

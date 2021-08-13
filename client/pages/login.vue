@@ -1,51 +1,58 @@
 <template lang="">
   <div>
-    <div class="col-4 offset-4 mt-5">
-      <div v-if="alert.type == 0" class="alert alert-success" role="alert">
-        {{ alert.message }}
-      </div>
-      <div v-if="alert.type == 1" class="alert alert-danger" role="alert">
-        {{ alert.message }}
-      </div>
-    </div>
-    <div class="col-4 offset-4 mt-5 card ">
-      <form @submit.prevent="login(user)">
-        <h2 class="text-center mb-3 mt-4 text-dark">Connexion</h2>
-        <div class="form-group">
-          <input
-            type="text"
+   
+
+<section class="contact" id="contact">
+  
+    <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+
+       
+        <form @submit.prevent="login(user)">
+               <h2 class="text-center mb-3 mt-4 text-dark">Connexion</h2>
+            <div class="inputBox">
+
+
+              <input
+            type="text" 
             name="username"
             v-model="user.username"
-            class="form-control"
+            class="input-full-line"
             placeholder="Nom d'utilisateur"
             required="required"
           />
-        </div>
-        <div class="form-group">
+                
+            </div>
+            <div class="inputBox">
+               
           <input
             type="password"
-            class="form-control"
+            class=" input-full-line"
             name="password"
             v-model="user.password"
             placeholder="Mot de passe "
             required="required"
           />
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+
+            <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Log in</button></br>
         </div>
         <div class="clearfix">
-          <label class="float-left form-check-label"><input type="checkbox" /> Se souvenir de moi</label>
+        <input type="checkbox" id="remember">
+        <label for="remember">remember me</label> </br>
           <nuxt-link to="/forget_password">
             <p class="text-right">Mot de passe oublié ?</p>
           </nuxt-link>
         </div>
-      </form>
+           
+        </form>
 
-      <nuxt-link to="/beLocataire">
-        <p class="text-left">Créer un nouveau compte</p>
-      </nuxt-link>
     </div>
+    </div>
+    
+</section>
+    
   </div>
 </template>
 
