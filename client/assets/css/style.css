@@ -1,9 +1,29 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
-:root{
-  --orange:#ffa500;
-  --red:rgb(173, 30, 30);
+:root{ 
+  --blue: #0d6efd;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #d63384;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #198754;
+  --teal: #20c997;
+  --cyan: #0dcaf0;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #0d6efd;
+  --secondary: #6c757d;
+  --success: #198754;
+  --info: #0dcaf0;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #212529;
+  
   
 
 }
@@ -20,7 +40,7 @@
 
 *::selection{
   background:var(--orange);
-  color:#fff;
+  color: var(--dark);
 }
 
 html{
@@ -55,7 +75,7 @@ section{
   display: inline-block;
   margin-top: 1rem;
   background:var(--orange);
-  color:#fff;
+  color: var(--white);
   padding:.8rem 3rem;
   border:.2rem solid var(--orange);
   cursor: pointer;
@@ -72,7 +92,7 @@ section{
     display: inline-block;
     margin-top: 1rem;
     background:var(--orange);
-    color:#fff; 
+    color: var(--dark); 
     border:.2rem solid var(--orange);
     cursor: pointer;
     font-size: 1.7rem;
@@ -88,18 +108,19 @@ section{
 header{
   position: fixed;
   top:0; left: 0; right:0;
-  background:#333;
+  /* background:#333; */
+  background:var(--orange);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:2rem 9%;
+  padding:0.5rem 9%;
 }
 
 header .logo{
   font-size: 2.5rem;
   font-weight: bolder;
-  color:#fff;
+  color: var(--dark);
   text-transform: uppercase;
 }
 
@@ -108,31 +129,31 @@ header .logo span{
 }
 
 header .navbar a{
-  color:#fff;
+  color: var(--dark);
   font-size: 2rem;
   margin:0 .8rem;
 }
 
 header .navbar a:hover{
-  color:var(--orange);
+  color:var(--white);
 }
 
 header .icons i{
   font-size: 2.5rem;
-  color:#fff;
+  color: var(--dark);
   cursor: pointer;
   margin-right: 2rem;
 }
 
 header .icons i:hover{
-  color:var(--orange);
+  color:var(--white);
 }
 
 header .search-bar-container{
   position: absolute;
   top:100%; left: 0; right:0;
   padding:1.5rem 2rem;
-  background:#333;
+  background:var(--orange);
   border-top: .1rem solid rgba(255,255,255,.2);
   display: flex;
   align-items: center;
@@ -154,7 +175,7 @@ header .search-bar-container #search-bar{
 }
 
 header .search-bar-container label{
-  color:#fff;
+  color: var(--dark);
   cursor: pointer;
   font-size: 3rem;
   margin-left: 1.5rem;
@@ -242,12 +263,12 @@ header .search-bar-container label:hover{
   position: absolute;
   top:2rem; right:3rem;
   font-size: 5rem;
-  color:#fff;
+  color: var(--dark);
   cursor: pointer;
 }
 
 #menu-bar{
-  color:#fff;
+  color: var(--dark);
   border:.1rem solid #fff;
   border-radius: .5rem;
   font-size: 3rem;
@@ -272,14 +293,14 @@ header .search-bar-container label:hover{
 
 .home .content h3{
   font-size: 4.5rem;
-  color:#fff;
+  color: var(--dark);
   text-transform: uppercase;
   text-shadow: 0 .3rem .5rem rgba(0,0,0,.1);
 }
 
 .home .content p{
   font-size: 2.5rem;
-  color:#fff;
+  color: var(--dark);
   padding:.5rem 0;
 }
 
@@ -597,7 +618,7 @@ header .search-bar-container label:hover{
 .footer .box-container .box h3{
   font-size: 2.5rem;
   padding:.7rem 0;
-  color:#fff;
+  color: var(--dark);
 }
 
 .footer .box-container .box p{
@@ -624,7 +645,7 @@ header .search-bar-container label:hover{
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: normal;
-  color:#fff;
+  color: var(--dark);
   border-top: .1rem solid rgba(255,255,255,.2);
 }
 

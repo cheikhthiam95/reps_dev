@@ -5,7 +5,9 @@
     <header>
       <div id="menu-bar" class="fas fa-bars"></div>
 
-      <a href="#" class="logo"><span>T</span>ravel</a>
+      <!-- <a href="#" class="logo"><span>A</span>typik<span>H</span>ouse</a> -->
+      <a href="#" class="logo"><img class="img-logo" src="~/assets/images/logo1_V1.png" alt=""></a>
+
 
       <nav class="navbar">
         <a href="#home">home</a>
@@ -173,3 +175,11 @@ export default {
   methods: {},
 };
 </script>
+
+<style lang="css" scoped>
+.img-logo{
+    width: 85px;
+    height: 60px;
+
+}
+</style>
