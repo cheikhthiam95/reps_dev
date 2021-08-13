@@ -1,6 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
    
 
 <section class="contact" id="contact">
@@ -16,14 +15,6 @@
 
               <input
             type="text" 
-=======
-    <div class="col-4 offset-4 mt-5 card">
-      <form @submit.prevent="login">
-        <h2 class="text-center mb-3 mt-4 text-dark">Connexion</h2>
-        <div class="form-group">
-          <input
-            type="text"
->>>>>>> e31122f69c1f0602c11ff2537dd18affe86b8af1
             name="username"
             v-model="user.username"
             class="input-full-line"
@@ -45,11 +36,11 @@
             </div>
 
             <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Log in</button></br>
+          <button type="submit" class="btn btn-primary btn-block">Log in</button> 
         </div>
         <div class="clearfix">
         <input type="checkbox" id="remember">
-        <label for="remember">remember me</label> </br>
+        <label for="remember">remember me</label> 
           <nuxt-link to="/forget_password">
             <p class="text-right">Mot de passe oublié ?</p>
           </nuxt-link>
