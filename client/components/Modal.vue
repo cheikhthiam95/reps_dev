@@ -54,7 +54,7 @@ export default {
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
-  top: 0;
+  top: 125px;
   right: 0;
   bottom: 0;
   left: 0;

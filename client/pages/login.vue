@@ -5,7 +5,8 @@
 <section class="contact" id="contact">
   
     <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+       <div class="col-md-6 col-md-offset-3 col-sm-8  col-sm-offset-2 col-lg-4 col-lg-offset-4 col-xs-12 ">
+
 
        
         <form @submit.prevent="submitLogin">

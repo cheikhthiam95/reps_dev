@@ -5,7 +5,7 @@
     Je suis un {{ session.role }}
 
     <template v-if="isHote">
-        <button @click="addHabitat">Créer un habitat</button>
+        <new-habitat></new-habitat>
       <div>
         <h2>Mes réservations en cours</h2>
       </div>
@@ -48,10 +48,25 @@ export default {
     addHabitat() {
       console.log("jajoute un habitat");
     },
+   async getCategorires(){
+       try {
+        const response = await this.$axios.$get("/categories/");
+        if (response ) {
+          return response
+        }
+      } catch (error) {
+        console.log("ici", error);
+        return []
+      } 
+    }
   },
   created() {
       if(this.isHote) {
           // On charge les trucs de l'hote
+       this.getCategorires().then(response =>{
+           this.$store.commit("SetCategories",response);
+              
+        })
       }
       if(this.isTenant) {
           // On charge les trucs du locatiare
