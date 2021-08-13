@@ -1,69 +1,76 @@
 <template lang="">
   <div>
     <h1>
-      <b-button v-b-modal.modal-1 ref="modalRef" class="btn btn-dark"> Ajouter un habitat</b-button>
+      <button class=" btn-dark" @click="$refs.modalRef.openModal()">Ajouter un habitat</button>
     </h1>
 
-    <b-modal id="modal-1" title="Ajouter un nouvel habitat" :hide-footer="true">
-      <div class="my-4">
-        <form @submit.prevent="createNewHabitat">
+
+<div class="form-modal" >
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <modal ref="modalRef">
+          <template v-slot:header>
+            <h1>Ajouter un habitat</h1>
+          </template>
+
+          <template v-slot:body>
+
+          <form @submit.prevent="createNewHabitat">
           <!-- <h2 class="text-center">Devenire habitat</h2>        -->
-          <div class="form-group">
-            <b-form-input
+          <div class="inputBox">
+            <input
               type="text"
               v-model="habitat.name"
-              class="form-control"
+              class="input-full-line"
               placeholder="name"
               required="required"
             >
-            </b-form-input>
+            
           </div>
-          <div class="form-group">
-            <b-form-textarea
+          <div class="inputBox">
+            <textarea
               type="text"
-              class="form-control"
+              class="input-full-line"
               v-model="habitat.description"
               placeholder="description"
               required="required"
             >
-            </b-form-textarea>
+            </textarea>
           </div>
-          <div class="form-group">
-            <b-form-input
+          <div class="inputBox">
+            <input
               type="number"
-              class="form-control"
+              class="input-full-line"
               v-model="habitat.superficie"
               placeholder="superficie"
               required="required"
             >
-            </b-form-input>
+            
           </div>
-          <div class="form-group">
-            <b-form-input
+          <div class="inputBox">
+            <input
               type="number"
-              class="form-control"
+              class="input-full-line"
               v-model="habitat.nombrePiece"
               placeholder="Nombre de piéce"
               required="required"
             >
-            </b-form-input>
+            
           </div>
-          <div class="form-group">
-            <b-form-select
-              v-model="habitat.categorieId"
-              value-field="_id"
-              text-field="description"
-              :options="$store.state.categories"
-              size="sm"
-              class="mt-3"
-            ></b-form-select>
+          <div class="inputBox">
+      
+
+             <select v-model="habitat.categorieId">
+            <option 
+                v-bind:value="categorie._id" v-for="categorie in $store.state.categories" v-bind:key="categorie._id">{{ categorie.name }}</option>
+  </select>
           </div>
 
-          <div class="form-group">
+          <div class="inputBox">
             <vue-google-autocomplete
               ref="address_ATYPIK"
               id="map"
-              classname="form-control"
+              classname="input-full-line"
               placeholder="Please type your address"
               v-on:placechanged="getAddressData"
               country="fr"
@@ -72,15 +79,29 @@
             </vue-google-autocomplete>
           </div>
 
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">
-              <b-spinner v-if="loading"></b-spinner>
-              Ajouter
-            </button>
+          <div class="inputBox">
+            
           </div>
-        </form>
-      </div>
-    </b-modal>
+        
+      <div>
+                <button class="btn" @click="$refs.modalRef.closeModal()">Annuler</button>
+                <button type="submit" class="btn btn-primary btn-block">
+              <!-- <b-spinner v-if="loading"></b-spinner> -->
+              Ajouter
+            </button> 
+              </div> </form>
+      </template>
+ 
+    </modal>
+    
+    </div></div>
+
+
+</div>
+
+    
+
+     
   </div>
 </template>
 
@@ -90,7 +111,9 @@ import VueGoogleAutocomplete from "vue-google-autocomplete";
 export default {
   components: {
     VueGoogleAutocomplete,
-  },
+  },    mounted() {
+      console.log("Allô",this.$store.state.categories)
+    },
   data() {
     return {
       habitat: {
@@ -107,6 +130,7 @@ export default {
     };
   },
   methods: {
+
     close() {
       this.$bvModal.hide("modal-1");
     },
