@@ -1,5 +1,6 @@
-<template lang="">
+<template>
   <div>
+<<<<<<< HEAD
    
 
 <section class="contact" id="contact">
@@ -15,6 +16,14 @@
 
               <input
             type="text" 
+=======
+    <div class="col-4 offset-4 mt-5 card">
+      <form @submit.prevent="login">
+        <h2 class="text-center mb-3 mt-4 text-dark">Connexion</h2>
+        <div class="form-group">
+          <input
+            type="text"
+>>>>>>> e31122f69c1f0602c11ff2537dd18affe86b8af1
             name="username"
             v-model="user.username"
             class="input-full-line"
@@ -57,22 +66,15 @@
 </template>
 
 <script>
-import axios from "axios";
-
-// Then, on the setup method
-
 export default {
   layout: "login",
-  data() {
-    return {
-      user: {},
-      alert: {
-        type: null,
-        message: "",
-      },
-    };
-  },
-  mounted() {
+  data: () => ({
+    user: {
+      username: undefined,
+      password: undefined,
+    },
+  }),
+  created() {
     if (this.$store.state.session == {}) this.$toast.error("Allô");
     // Get current user value
     this.$warehouse.get("user");
@@ -80,37 +82,32 @@ export default {
   },
 
   methods: {
-    async login(user) {
-      console.log(user, "voici les données reçu du formulaire");
+    persistSession(datas) {
+      this.$store.commit("setSession", datas);
+      this.$store.commit("logged", true);
+      this.$warehouse.set("session", datas, 10000);
+      this.$warehouse.set("isConnected", true, 10000);
+    },
+    async login() {
       try {
-        const response = await this.$axios.$post("/users/login", user);
-        console.log(response);
-        this.$store.commit("setSession", response);
-        this.$store.commit("logged", true);
-        this.$warehouse.set("session", response, 10000);
-        this.$warehouse.set("isConnected", true, 10000);
-        console.log(this.$store.state.session, "le session en cours ");
+        const response = await this.$axios.$post("/users/login", this.user);
         const { userId, role } = response || {};
-        if (userId && role && ['admin', 'hote', 'locataire'].includes(role)) {
+        
+        if (userId && role && ["admin", "hote", "locataire"].includes(role)) {
+          this.persistSession(response);
           return this.$router.push(`/${role}/${userId}`);
         }
-        this.$nuxt.sendError({ statusCode: 404, message: 'Post not found' });
+        
+        this.$toast.error("Some informations are missing. We couldn't proceed to the login.");
+        console.error('missies userId, role or the role sent is not handled');
       } catch (error) {
-        console.log("ici", error);
+        if(error.response.status == 401) {
+          return this.$toast.error("Nom d'utilisateur ou mot de passe invalide");
+        }
+        this.$toast.error("An unexpected error has occurred. Please contact the support");
+        console.error("Error while loggin : ", error);
       }
-
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/locataire/login", user
-
-      // );
-      // this.alert = response.data
-      // if(response && response.data.message && response.data.message.type == 0)
-      // {
-      //   this.$store.commit("setSession",response.data.session)
-      // }
-      // console.log(response, 'Et le alert est', this.$store.state.session);
-      // this.$router.push("/locataire")
-    },
-  },
+    }
+  }
 };
-</script> 
+</script>
