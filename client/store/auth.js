@@ -18,7 +18,7 @@ export const actions = {
         if (res) { commit(AUTH_LOGIN, res); }
         return res;
     },
-    disconnect({ commit }) {
+    logout({ commit }) {
         commit(AUTH_LOGOUT)
         return true;
     }
