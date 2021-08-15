@@ -6,9 +6,13 @@ const habitatSchemas = Schema({
   categorieId:{ ...requiredString },
   name: { ...requiredString },
   description: { ...requiredString },
-  superficie: { ...requiredString, select: false },
-  nombrePiece: { ...requiredString, select: false }, 
+  superficie: { ...requiredString },
+  price: { ...requiredString },
+  priceDiscount: { require:false,
+    type:String },
+  nombrePiece: { ...requiredString},  
   addresse: {...requiredObject},
+  
   status: {
     require:false,
     type:Boolean

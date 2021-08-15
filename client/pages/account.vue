@@ -22,7 +22,9 @@
                 <th> Description</th>
                 <th> statut</th>
                 <th> Prix</th>
-                <th> Ville</th>
+               
+                <th> Superficie</th>
+ <th> Ville</th>
                 <th> Address</th>
                 <th>Action</th>
               </tr>
@@ -34,7 +36,9 @@
                 <td>{{ habitat.description }}</td>
                 <td> <span v-if="habitat.status" class="fas fa-check"></span> <span v-else class="fas fa- "></span></td>
                 <td>{{ habitat.price }}</td>
-                <td>{{ habitat.addresse.fullAddesse.locality }}</td>
+                <td>{{ habitat.superficie  }}</td>
+                <td>{{ habitat.addresse.formatted_address }}</td>
+
                 <td>{{ habitat.addresse.formatted_address }}</td>
                 <td>
                   <div style="display: flex;justify-content: space-evenly;">
@@ -73,6 +77,8 @@ export default {
   components: { EditeHabitat },
   middleware: "auth",
   mounted() {
+  console.log("L'habitat  reçu ",this.habitats )
+
     this.$root.$on("msg_from_child",() =>{
       this.reload()
     })

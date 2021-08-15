@@ -57,6 +57,16 @@
             >
             
           </div>
+
+              <div class="inputBox">
+      <input
+        type="number"
+        class="input-full-line"
+        v-model="habitat.price"
+        placeholder="Prixe / nuit"
+        required="required"
+      />
+    </div>
           <div class="inputBox">
       
 

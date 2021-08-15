@@ -57,7 +57,7 @@
       <input
         type="number"
         class="input-full-line"
-        v-model="parsIn"
+        v-model="habitat.price"
         placeholder="Prixe / nuit"
         required="required"
       />
