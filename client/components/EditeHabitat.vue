@@ -1,7 +1,7 @@
 <template lang="">
   <div>
     <h1>
-      <button class=" btn-dark" @click="$refs.modalEditHabitat.openModal()">Edider</button>
+      <button class="btn-dark fas fa-pen" @click="$refs.modalEditHabitat.openModal()"></button>
     </h1>
 
 
@@ -142,6 +142,10 @@ export default {
     };
   },
   methods: {
+
+    sendMessageToPerent() {
+      this.$root.$emit("msg_from_child");
+    },
     async updateHabitat() {
       this.loading = true;
       try {
@@ -156,6 +160,8 @@ export default {
         if (response && response.ok == 1) {
           this.$toast.success("Habitat mise à jour avec success !");
           this.$refs.modalEditHabitat.closeModal();
+          this.sendMessageToPerent()
+
         }
       } catch (error) {
         console.log("ici", error);

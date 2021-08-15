@@ -138,8 +138,9 @@ export default {
   },
   methods: {
 
-    close() {
-      this.$bvModal.hide("modal-1");
+ 
+    sendMessageToPerent() {
+      this.$root.$emit("msg_from_child");
     },
     async createNewHabitat() {
       this.loading = true;
@@ -150,8 +151,9 @@ export default {
           hoteId: this.session.userId, status: true
         });
         if (response && response.id) {
-          console.log("Voici le current hote", this.$store.state.currentHote);
-          this.close();
+          
+          this.$refs.modalRef.closeModal();
+          this.sendMessageToPerent()
         }
       } catch (error) {
         console.log("ici", error);

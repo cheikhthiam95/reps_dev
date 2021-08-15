@@ -1,7 +1,7 @@
 <template lang="">
   <div>
     <h1>
-      <button class=" btn-dark" @click="$refs.deleteHabitatModal.openModal()">Suppimer</button>
+      <button class="fas fa-trash btn-danger" @click="$refs.deleteHabitatModal.openModal()"></button>
     </h1>
 
 
@@ -66,20 +66,20 @@ export default {
         );
         if (response && response.ok == 1) {
           this.$toast.success("Habitat supprimé avec success !");
+
           this.$refs.deleteHabitatModal.closeModal();
         }
       } catch (error) {
         console.log("ici", error);
       } finally {
         this.loading = false;
+        this.sendMessageToPerent();
       }
     },
-    /**
-     * When the location found
-     * @param {Object} addressData Data of the found location
-     * @param {Object} placeResultData PlaceResult object
-     * @param {String} id Input container ID
-     */
+
+    sendMessageToPerent() {
+      this.$root.$emit("msg_from_child");
+    },
   },
 };
 </script>
