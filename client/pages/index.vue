@@ -2,65 +2,18 @@
 <div >
  
     
-<!-- header section starts  -->
+ 
 
-<!-- <header>
-
-    <div id="menu-bar" class="fas fa-bars"></div>
-
-    <a href="#" class="logo"><span>T</span>ravel</a>
-
-    <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#book">book</a>
-        <a href="#packages">packages</a>
-        <a href="#services">services</a>
-        <a href="#gallery">gallery</a>
-        <a href="#review">review</a>
-        <a href="#contact">contact</a>
-    </nav>
-
-    <div class="icons">
-        <i class="fas fa-search" id="search-btn"></i>
-        <i class="fas fa-user" id="login-btn"></i>
-    </div>
-
-    <form action="" class="search-bar-container">
-        <input type="search" id="search-bar" placeholder="search here...">
-        <label for="search-bar" class="fas fa-search"></label>
-    </form>
-
-</header> -->
-
-<!-- header section ends -->
-
-<!-- login form container  -->
-
-<div class="login-form-container">
-
-    <i class="fas fa-times" id="form-close"></i>
-
-    <form action="">
-        <h3>login</h3>
-        <input type="email" class="box" placeholder="enter your email">
-        <input type="password" class="box" placeholder="enter your password">
-        <input type="submit" value="login now" class="btn">
-        <input type="checkbox" id="remember">
-        <label for="remember">remember me</label>
-        <p>forget password? <a href="#">click here</a></p>
-        <p>don't have and account? <a href="#">register now</a></p>
-    </form>
-
-</div>
+ 
 
 <!-- home section starts  -->
 
 <section class="home" id="home">
 
     <div class="content">
-        <h3>adventure is worthwhile</h3>
-        <p>dicover new places with us, adventure awaits</p>
-        <a href="#" class="btn">discover more</a>
+        <h3>l'aventure en vaut la peine</h3>
+        <p>découvrez de nouveaux endroits avec nous, l'aventure vous attend</p>
+        <a href="#" class="btn">découvrir plus</a>
     </div>
 
     <div class="controls">
@@ -84,14 +37,25 @@
 <section class="book" id="book">
 
     <h1 class="heading">
-        <span>b</span>
-        <span>o</span>
-        <span>o</span>
-        <span>k</span>
+        <span>r</span>
+        <span>é</span>
+        <span>s</span>
+        <span>e</span>
+        <span>r</span>
+        <span>v</span>
+        <span>e</span>
+        <span>r</span>
         <span class="space"></span>
+        <span>m</span>
+        <span>a</span>
+        <span>i</span>
         <span>n</span>
-        <span>o</span>
-        <span>w</span>
+        <span>t</span>
+        <span>e</span>
+        <span>n</span>
+        <span>a</span>
+        <span>n</span>
+        <span>t</span>
     </h1>
 
     <div class="row">
@@ -102,22 +66,22 @@
 
         <form action="">
             <div class="inputBox">
-                <h3>where to</h3>
+                <h3>Où</h3>
                 <input type="text" placeholder="place name">
             </div>
             <div class="inputBox">
-                <h3>how many</h3>
+                <h3>Combien</h3>
                 <input type="number" placeholder="number of guests">
             </div>
             <div class="inputBox">
-                <h3>arrivals</h3>
+                <h3>Arrivée</h3>
                 <input type="date">
             </div>
             <div class="inputBox">
-                <h3>leaving</h3>
+                <h3>Départ</h3>
                 <input type="date">
             </div>
-            <input type="submit" class="btn" value="book now">
+            <input type="submit" class="btn" value="Reserver">
         </form>
 
     </div>
@@ -131,68 +95,19 @@
 <section class="packages" id="packages">
 
     <h1 class="heading">
-        <span>p</span>
+        <span>h</span>
+        <span>b</span>
+        <span>i</span>
+        <span>t</span>
         <span>a</span>
-        <span>c</span>
-        <span>k</span>
-        <span>a</span>
-        <span>g</span>
-        <span>e</span>
+        <span>t</span>
         <span>s</span>
     </h1>
 
     <div class="box-container">
+        <base-habitat v-for="(habitat, index) in habitats" :key="habitat._id" :habitat ="habitat" />
 
-        <div class="box">
-            <img src="~/assets/images/p-1.jpg" alt="">
-            <div class="content">
-                <h3> <i class="fas fa-map-marker-alt"></i> mumbai </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span> </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="~/assets/images/p-2.jpg" alt="">
-            <div class="content">
-                <h3> <i class="fas fa-map-marker-alt"></i> hawaii </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span> </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
-
-        <div class="box">
-            <img src="~/assets/images/p-3.jpg" alt="">
-            <div class="content">
-                <h3> <i class="fas fa-map-marker-alt"></i> sydney </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
-                <div class="price"> $90.00 <span>$120.00</span> </div>
-                <a href="#" class="btn">book now</a>
-            </div>
-        </div>
+    
 
         <div class="box">
             <img src="~/assets/images/p-4.jpg" alt="">
@@ -265,6 +180,8 @@
         <span>e</span>
         <span>s</span>
     </h1>
+
+
 
     <div class="box-container">
 
@@ -537,46 +454,7 @@
 
 </section>
 
-<!-- footer section  -->
-
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>about us</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quas magni pariatur est accusantium voluptas enim nemo facilis sit debitis.</p>
-        </div>
-        <div class="box">
-            <h3>branch locations</h3>
-            <a href="#">india</a>
-            <a href="#">USA</a>
-            <a href="#">japan</a>
-            <a href="#">france</a>
-        </div>
-        <div class="box">
-            <h3>quick links</h3>
-            <a href="#">home</a>
-            <a href="#">book</a>
-            <a href="#">packages</a>
-            <a href="#">services</a>
-            <a href="#">gallery</a>
-            <a href="#">review</a>
-            <a href="#">contact</a>
-        </div>
-        <div class="box">
-            <h3>follow us</h3>
-            <a href="#">facebook</a>
-            <a href="#">instagram</a>
-            <a href="#">twitter</a>
-            <a href="#">linkedin</a>
-        </div>
-
-    </div>
-
-    <h1 class="credit"> created by <span> mr. web designer </span> | all rights reserved! </h1>
-
-</section>
+ 
 
 
 
@@ -625,7 +503,9 @@ export default {
         //     self.documentIsCrolled();
         // };
 
-        // this.getCategories();
+        this.gethabitats().then(response => {
+            this.habitats = response;
+        })
         // this.gethabitatsReserved();
 
     },
@@ -701,10 +581,11 @@ export default {
         },
         async gethabitats() {
             try {
-                this.habitats = await this.$axios.$get("/habitats/");
-                console.log(this.habitats);
+               return await this.$axios.$get("/habitats/findAllBy/status/2");
+               
             } catch (error) {
                 console.log(error);
+                return []
             }
         },
         async reserver(habitat) {

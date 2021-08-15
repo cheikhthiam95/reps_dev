@@ -158,7 +158,7 @@ export default {
         const response = await this.$axios.$post("/habitats/newHabitat", {
           ...this.habitat,
           // ! Put the relea hote id
-          hoteId: this.session.userId, status: true
+          hoteId: this.session.userId, status: 2
         });
         if (response && response.id) {
           
@@ -178,8 +178,8 @@ export default {
      * @param {String} id Input container ID
      */
     getAddressData: function(addressData, placeResultData, id) {
-      this.habitat.addresse = {
-        fullAddesse: addressData,
+      this.habitat.address = {
+        fullAddress: addressData,
         formatted_address: placeResultData.formatted_address,
       };
     }

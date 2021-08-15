@@ -24,7 +24,8 @@
 
       <div class="icons">
         <i class="fas fa-search" id="search-btn"></i>
-        <nuxt-link to="/account">
+        <nuxt-link to="/account" v-if="logged">
+          <span>  {{session.firstName + "  " +session.lastName}} </span>
           <i class="fas fa-user" id="login-btn"></i>
         </nuxt-link>
       </div>
@@ -34,7 +35,7 @@
         >
 
         <nuxt-link v-else class="btn-dark" to="/login">
-          Se CONNECTER
+          Se connecter
         </nuxt-link>
       </div>
 
@@ -99,11 +100,13 @@
 <script>
 import { createNamespacedHelpers } from "vuex";
 
-const { mapGetters, mapActions } = createNamespacedHelpers("auth");
+const { mapGetters, mapActions, mapState } = createNamespacedHelpers("auth");
 
 export default {
   computed: {
     ...mapGetters(["logged"]),
+    ...mapState(["session"]),
+
   },
   methods: {
     ...mapActions(["logout"]),

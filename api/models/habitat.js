@@ -11,11 +11,10 @@ const habitatSchemas = Schema({
   priceDiscount: { require:false,
     type:String },
   nombrePiece: { ...requiredString},  
-  addresse: {...requiredObject},
-  
+  address: {...requiredObject},
   status: {
     require:false,
-    type:Boolean
+    type:Number
   },
   createdBy: {
     required: false,

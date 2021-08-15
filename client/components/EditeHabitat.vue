@@ -176,7 +176,7 @@ export default {
      * @param {String} id Input container ID
      */
     getAddressData: function (addressData, placeResultData, id) {
-      this.habitat.addresse = {
+      this.habitat.address = {
         fullAddesse: addressData,
         formatted_address: placeResultData.formatted_address,
       };
