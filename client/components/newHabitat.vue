@@ -107,12 +107,19 @@
 
 <script>
 import VueGoogleAutocomplete from "vue-google-autocomplete";
+import { createNamespacedHelpers } from "vuex";
+const { mapState } = createNamespacedHelpers("auth");
 
 export default {
   components: {
     VueGoogleAutocomplete,
   },    mounted() {
       console.log("Allô",this.$store.state.categories)
+    },
+
+    computed:{
+    ...mapState(["session"]),
+
     },
   data() {
     return {
@@ -140,7 +147,7 @@ export default {
         const response = await this.$axios.$post("/habitats/newHabitat", {
           ...this.habitat,
           // ! Put the relea hote id
-          id_hote: "60336e720e2aed2e037961b7",
+          hoteId: this.session.userId, status: true
         });
         if (response && response.id) {
           console.log("Voici le current hote", this.$store.state.currentHote);

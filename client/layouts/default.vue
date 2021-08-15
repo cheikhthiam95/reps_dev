@@ -24,8 +24,8 @@
 
       <div class="icons">
         <i class="fas fa-search" id="search-btn"></i>
-           <nuxt-link to="/account"> 
-         <i class="fas fa-user" id="login-btn"></i>
+        <nuxt-link to="/account">
+          <i class="fas fa-user" id="login-btn"></i>
         </nuxt-link>
       </div>
       <div>
@@ -40,8 +40,6 @@
 
       <form action="" class="search-bar-container">
         <input type="search" id="search-bar" placeholder="search here..." />
-     
-        
       </form>
     </header>
 
