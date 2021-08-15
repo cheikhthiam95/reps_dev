@@ -32,12 +32,12 @@
                 <td>{{ getCategorieNameById(habitat.categorieId) }}</td>
                 <td>{{ habitat.name }}</td>
                 <td>{{ habitat.description }}</td>
-                <td> <span v-if="habitat.status" class="fas fa-check"></span> <span v-else class="fas fa-clock"></span></td>
+                <td> <span v-if="habitat.status" class="fas fa-check"></span> <span v-else class="fas fa- "></span></td>
                 <td>{{ habitat.price }}</td>
                 <td>{{ habitat.addresse.fullAddesse.locality }}</td>
                 <td>{{ habitat.addresse.formatted_address }}</td>
                 <td>
-                  <div>
+                  <div style="display: flex;justify-content: space-evenly;">
                     <span ><edite-habitat :habitat="habitat" /></span>
                     <span ><delete-habitat :habitat="habitat" /></span>
 
@@ -72,6 +72,11 @@ const { mapState } = createNamespacedHelpers("auth");
 export default {
   components: { EditeHabitat },
   middleware: "auth",
+  mounted() {
+    this.$root.$on("msg_from_child",() =>{
+      this.reload()
+    })
+  },
   computed: {
     ...mapState(["session"]), 
     isHote() {
@@ -104,6 +109,14 @@ export default {
         return []
       } 
     },
+    reload(){
+
+     this.getHabitatsForHote().then(response =>{
+          //  this.$store.commit("SetCategories",response);
+          this.habitats = response
+              
+        })
+    },
     async getHabitatsForHote(){
            try {
         const response = await this.$axios.$get("/habitats/findAllby/hoteId/"+this.session.userId);
@@ -129,11 +142,7 @@ export default {
               
         })  
         
-        this.getHabitatsForHote().then(response =>{
-          //  this.$store.commit("SetCategories",response);
-          this.habitats = response
-              
-        })
+      this.reload()
       }
       if(this.isTenant) {
           // On charge les trucs du locatiare
