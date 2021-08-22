@@ -62,7 +62,7 @@ export default {
   },
 
   methods: {
-     book() {
+     async book() {
       if (this.logged) {
         try {
           const response = await this.$axios.$post(
