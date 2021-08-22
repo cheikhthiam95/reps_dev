@@ -109,7 +109,7 @@
 
     
 
-        <div class="box">
+        <!-- <div class="box">
             <img src="~/assets/images/p-4.jpg" alt="">
             <div class="content">
                 <h3> <i class="fas fa-map-marker-alt"></i> paris </h3>
@@ -158,7 +158,7 @@
                 <div class="price"> $90.00 <span>$120.00</span> </div>
                 <a href="#" class="btn">book now</a>
             </div>
-        </div>
+        </div> -->
 
     </div>
 

@@ -7,6 +7,7 @@ habitatId: { ...requiredString },
 startDate: { ...requiredString },
 endDate:{ ...requiredString},
 status:{ ...requiredNumber},
+guests:{ ...requiredNumber},
 
 });
 

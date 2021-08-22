@@ -29,13 +29,14 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState,mapGetters } = createNamespacedHelpers("auth");
+const { mapState, mapGetters } = createNamespacedHelpers("auth");
+const { mapActions } = createNamespacedHelpers("utils");
 
 export default {
   computed: {
     ...mapGetters(["logged"]),
     ...mapState(["session"]),
-
+    ...mapActions(["setHabitat"]),
   },
   props: {
     habitat: {
@@ -62,25 +63,17 @@ export default {
   },
 
   methods: {
-     async book() {
-      if (this.logged) {
-        try {
-          const response = await this.$axios.$post(
-            "/reservations/newReservation/",
-            {}
-          );
-          if (response) {
-            console.log("Naruto ", response);
-            return response;
-          }
-        } catch (error) {
-          console.log("ici", error);
-          return [];
-        }
-      } else {
-        this.$toast.success("Vous devez être connnecté pour faire une réservation !");
-        this.$router.replace({ name: "login" });
-      }
+     book(args) {
+      console.log("Le habita", { ...args });
+      // try {
+      //   const response = await this.setHabitat(1);
+      //   if (response) {
+          this.$store.commit("setCurrentHabitat", args);
+          this.$router.replace({ name: "book" });
+        // }
+      // } catch (error) {
+      //   console.log(error)
+      // }
     },
   },
 };

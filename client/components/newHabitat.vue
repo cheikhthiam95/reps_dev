@@ -157,7 +157,7 @@ export default {
       try {
         const response = await this.$axios.$post("/habitats/newHabitat", {
           ...this.habitat,
-          // ! Put the relea hote id
+         
           hoteId: this.session.userId
         });
         if (response && response.id) {
