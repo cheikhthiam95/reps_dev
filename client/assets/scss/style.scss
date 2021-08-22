@@ -22,7 +22,7 @@ $table-border-radius: 10px;
 $table-highlight-color: #EAF3F3;
 $table-header-background-color: #167F92;
 $table-header-text-color: #FFF;
-$table-header-border: 1px solid #FFF;
+// $table-header-border: 1px solid #FFF;
 
 // The Responstable mixin
 
@@ -80,7 +80,7 @@ $table-header-border: 1px solid #FFF;
     td {
       display: block; // display the table data as one block for mobile
       word-wrap: break-word;
-      max-width: 7em;
+      // max-width: 7em;
       &:first-child { 
         display: table-cell; // display the first one as a table cell (radio button) for mobile
         text-align: center;
@@ -96,7 +96,7 @@ $table-header-border: 1px solid #FFF;
       margin: .5em 1em;  
       @media (min-width: $breakpoint) {
         display: table-cell; // show the table as a normal table for tablet and desktop
-        padding: 1em;
+        // padding: 1em;
       }
     }  
   }    
@@ -109,7 +109,8 @@ $table-header-border: 1px solid #FFF;
   $highlight-color: $table-highlight-color,
   $header-background-color: $table-header-background-color,
   $header-text-color: $table-header-text-color,
-  $header-border: $table-header-border);
+  // $header-border: $table-header-border
+  );
 
 // General styles
 

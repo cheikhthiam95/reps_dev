@@ -487,6 +487,7 @@ export default {
     },
 
     mounted() {
+ 
 
 
 
@@ -581,7 +582,7 @@ export default {
         },
         async gethabitats() {
             try {
-               return await this.$axios.$get("/habitats/findAllBy/status/2");
+               return await this.$axios.$get("/habitats/findAllBy/isPublished/true");
                
             } catch (error) {
                 console.log(error);

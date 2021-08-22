@@ -5,7 +5,9 @@ const router = crud(User);
 const { authUser, authRole } = require('../middlewares/auth');
 const { ROLES } = require('../config/roles')
 
-router.post('/newHabitat', newHabitat);
+router.post('/newHabitat',newHabitat);
+router.get('/newHabitat',newHabitat);
+
 
 
 // router.post('/newuser', authUser, authRole(ROLES.admin), newUser);

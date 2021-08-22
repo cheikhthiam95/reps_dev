@@ -11,17 +11,17 @@ exports.login = controller(async ({ body: { username, password } }) => {
   const errorMsg1 = "Le mot de passe est incorrecte";
 
   const user = await User.findOne(
-    { username },{username:true,password:true,role:true,lastName:true,firstName:true}
+    { username }, { username: true, password: true, role: true, lastName: true, firstName: true }
   );
   console.log(user);
   if (!user) throw new NotAuthorizedError(errorMsg);
   const result = await bcrypt.compare(password, user.password);
   if (!result) throw new NotAuthorizedError(errorMsg1);
-  console.log('role: ',roleConverter('admin'));
+  console.log('role: ', roleConverter('admin'));
   return {
-   
+
     role: roleConverter(user.role),
-    token: jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET, {
+    token: jwt.sign({ userId: user._id }, process.env.SECRET_AUTH_TOKEN, {
       expiresIn: "24h",
     }), username: user.username,
     lastName: user.lastName,
