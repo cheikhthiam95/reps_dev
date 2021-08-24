@@ -11,9 +11,10 @@ const habitatSchemas = Schema({
   priceDiscount: { ...notRequiredString },
   nombrePiece: { ...requiredString },
   address: { ...requiredObject },
-  status: { ...notRequireBoolean },
+  isBooked: { ...notRequireBoolean },
+  inBookingProcess: { ...notRequireBoolean }, 
   published: { ...notRequireBoolean },
-  isPublished: { ...notRequireBoolean },
+  isPublished: { ...notRequireBoolean },  
   createdBy: {
     required: false,
     type: Schema.Types.ObjectId,
