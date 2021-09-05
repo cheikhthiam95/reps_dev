@@ -69,7 +69,7 @@ export default {
       //   const response = await this.setHabitat(1);
       //   if (response) {
           this.$store.commit("setCurrentHabitat", args);
-          this.$router.replace({ name: "book" });
+          this.$router.replace({ name: "book-habitatId" , params:{habitatId:args._id}});
         // }
       // } catch (error) {
       //   console.log(error)

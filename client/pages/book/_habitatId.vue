@@ -47,8 +47,21 @@ export default {
     ...mapState(["session"]),
   },
   created() {
-    this.bookingArgs = { ...this.$store.state.currentHabitat };
-    console.log('bookingArgs est :',this.bookingArgs)
+    
+
+    if(this.$store.state.currentHabitat?._id){
+
+      console.log("On a le store")
+      this.bookingArgs = { ...this.$store.state.currentHabitat };
+      console.log(this.bookingArgs);
+    }else{
+      console.log("On va le cherhcher")
+
+      this.getCurrentHabitat().then(res =>{
+        this.$store.commit("setCurrentHabitat", res);
+      })
+    }
+     
   },
 
   data() {
@@ -83,6 +96,23 @@ export default {
         this.$router.replace({ name: "login" });
       }
     },
+
+    async getCurrentHabitat(){
+        try {
+          const response = await this.$axios.$get(
+            "/habitats/"+this.$route.params.habitatId
+          );
+          if (response) {
+            console.log("Naruto ", response);
+            return response;
+          }
+        } catch (error) {
+          console.log("ici", error);
+          return [];
+        }
+    }
   },
+
+
 };
 </script>

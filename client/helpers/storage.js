@@ -1,4 +1,4 @@
-const storage = sessionStorage;
+const storage = window.sessionStorage;
 export default {
     get: key => {
       const value = storage.getItem(key)
