@@ -1,0 +1,92 @@
+{
+  "DeleteHabitat": {
+    "description": "Auto imported from /components/DeleteHabitat.vue"
+  },
+  "LazyDeleteHabitat": {
+    "description": "Auto imported from /components/DeleteHabitat.vue"
+  },
+  "DemandeDeReservationEnCours": {
+    "description": "Auto imported from /components/DemandeDeReservationEnCours.vue"
+  },
+  "LazyDemandeDeReservationEnCours": {
+    "description": "Auto imported from /components/DemandeDeReservationEnCours.vue"
+  },
+  "EditeHabitat": {
+    "description": "Auto imported from /components/EditeHabitat.vue"
+  },
+  "LazyEditeHabitat": {
+    "description": "Auto imported from /components/EditeHabitat.vue"
+  },
+  "Gallery": {
+    "description": "Auto imported from /components/Gallery.vue"
+  },
+  "LazyGallery": {
+    "description": "Auto imported from /components/Gallery.vue"
+  },
+  "ListHabitat": {
+    "description": "Auto imported from /components/ListHabitat.vue"
+  },
+  "LazyListHabitat": {
+    "description": "Auto imported from /components/ListHabitat.vue"
+  },
+  "Modal": {
+    "description": "Auto imported from /components/Modal.vue"
+  },
+  "LazyModal": {
+    "description": "Auto imported from /components/Modal.vue"
+  },
+  "AtypikTable": {
+    "description": "Auto imported from /components/atypikTable.vue"
+  },
+  "LazyAtypikTable": {
+    "description": "Auto imported from /components/atypikTable.vue"
+  },
+  "EditProfile": {
+    "description": "Auto imported from /components/editProfile.vue"
+  },
+  "LazyEditProfile": {
+    "description": "Auto imported from /components/editProfile.vue"
+  },
+  "Filters": {
+    "description": "Auto imported from /components/filters.vue"
+  },
+  "LazyFilters": {
+    "description": "Auto imported from /components/filters.vue"
+  },
+  "GooglePlaces": {
+    "description": "Auto imported from /components/googlePlaces.vue"
+  },
+  "LazyGooglePlaces": {
+    "description": "Auto imported from /components/googlePlaces.vue"
+  },
+  "Login": {
+    "description": "Auto imported from /components/login.vue"
+  },
+  "LazyLogin": {
+    "description": "Auto imported from /components/login.vue"
+  },
+  "NewHabitat": {
+    "description": "Auto imported from /components/newHabitat.vue"
+  },
+  "LazyNewHabitat": {
+    "description": "Auto imported from /components/newHabitat.vue"
+  },
+  "NewUser": {
+    "description": "Auto imported from /components/newUser.vue"
+  },
+  "LazyNewUser": {
+    "description": "Auto imported from /components/newUser.vue"
+  },
+  "Validation": {
+    "description": "Auto imported from /components/validation.vue"
+  },
+  "LazyValidation": {
+    "description": "Auto imported from /components/validation.vue"
+  },
+  "BaseHabitat": {
+    "description": "Auto imported from /components/Base/BaseHabitat.vue"
+  },
+  "LazyBaseHabitat": {
+    "description": "Auto imported from /components/Base/BaseHabitat.vue"
+  }
+}

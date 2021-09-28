@@ -1,0 +1,79 @@
+[
+  {
+    "name": "account",
+    "path": "/account",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/account.vue",
+    "chunkName": "pages/account",
+    "_name": "_e50601ba"
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/admin.vue",
+    "chunkName": "pages/admin",
+    "_name": "_6938b6c5"
+  },
+  {
+    "name": "beLocataire",
+    "path": "/beLocataire",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/beLocataire.vue",
+    "chunkName": "pages/beLocataire",
+    "_name": "_47f7e441"
+  },
+  {
+    "name": "bePartenaire",
+    "path": "/bePartenaire",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/bePartenaire.vue",
+    "chunkName": "pages/bePartenaire",
+    "_name": "_2e597b58"
+  },
+  {
+    "name": "forget_password",
+    "path": "/forget_password",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/forget_password.vue",
+    "chunkName": "pages/forget_password",
+    "_name": "_7eeb48ba"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_017105df"
+  },
+  {
+    "name": "modal",
+    "path": "/modal",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/modal.vue",
+    "chunkName": "pages/modal",
+    "_name": "_2d8061ba"
+  },
+  {
+    "name": "newAccount",
+    "path": "/newAccount",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/newAccount.vue",
+    "chunkName": "pages/newAccount",
+    "_name": "_5d9e62e7"
+  },
+  {
+    "name": "book-habitatId",
+    "path": "/book/:habitatId?",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/book/_habitatId.vue",
+    "chunkName": "pages/book/_habitatId",
+    "_name": "_055c9a7f"
+  },
+  {
+    "name": "hote-id_hotes",
+    "path": "/hote/:id_hotes",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/hote/_id_hotes/index.vue",
+    "chunkName": "pages/hote/_id_hotes/index",
+    "_name": "_a4aae8c8"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/fluxod/Cheikh_projects/reps_dev/client/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_37c962c8"
+  }
+]
