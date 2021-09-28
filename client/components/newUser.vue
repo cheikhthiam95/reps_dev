@@ -126,7 +126,7 @@ export default {
   data() {
     return {
       newUser: {
-          avatar: {} 
+        avatar: {},
       },
       password: "",
       username: "",
@@ -142,10 +142,10 @@ export default {
 
   methods: {
     async register() {
-      const user = { 
-          ...this.newUser,
-          avatar: { path: this.newUser.avatar && this.newUser.avatar.$path } 
-      }
+      const user = {
+        ...this.newUser,
+        avatar: { path: this.newUser.avatar && this.newUser.avatar.$path },
+      };
       delete this.newUser.avatar.$path;
       try {
         const response = await this.$axios.$post("/users/newUser", {
@@ -155,27 +155,22 @@ export default {
         });
         if (response && response.id) {
           // this.$store.commit("setCurrentHote", response);
-          console.log("Voici le current hote", this.$store.state[this.stateDestination]);
-          this.login({username: this.newUser.email, password: this.newUser.password});
+          console.log(
+            "Voici le current hote",
+            this.$store.state[this.stateDestination]
+          );
+          this.login({
+            username: this.newUser.email,
+            password: this.newUser.password,
+          });
           this.$router.push(this.redirectTo + "/" + response.id);
         }
       } catch (error) {
-        console.log("ici", error);
+        console.log("ici ", error);
       }
-
-      // const response = await axios.post(
-      //   "http://localhost:5000/api/locataire/login", newUser
-
-      // );
-      // this.alert = response.data
-      // if(response && response.data.message && response.data.message.type == 0)
-      // {
-      //   this.$store.commit("setSession",response.data.session)
-      // }
-      // console.log(response, 'Et le alert est', this.$store.state.session);
-      // this.$router.push("/locataire")
+ 
     },
-    async login({username, password}) {
+    async login({ username, password }) {
       console.log("Login depuis newUSer");
       try {
         const response = await this.$axios.$post("/users/login", {
@@ -213,13 +208,18 @@ export default {
      * @param {Object} placeResultData PlaceResult object
      * @param {String} id Input container ID
      */
-    getAddressData: function(addressData, placeResultData, id) {
+    getAddressData: function (addressData, placeResultData, id) {
       this.newUser.addresse = {
         fullAddesse: addressData,
         formatted_address: placeResultData.formatted_address,
       };
 
-      console.log(" addressData, placeResultData, id ===>", addressData, placeResultData, id);
+      console.log(
+        " addressData, placeResultData, id ===>",
+        addressData,
+        placeResultData,
+        id
+      );
     },
   },
 };

@@ -13,21 +13,21 @@
             <h1>Supprimer un habitat</h1>
           </template>
 
-          <template v-slot:body>
-  <form @submit.prevent="deleteHabitat">
-    <div>Voulez-vous vraiment Supprimer cet habitat ?</div>
+                    <template v-slot:body>
+            <form @submit.prevent="deleteHabitat">
+              <div>Voulez-vous vraiment Supprimer cet habitat ?</div>
 
-    <div>
-      <button class="btn" @click="$refs.deleteHabitatModal.closeModal()">
-        Annuler
-      </button>
-      <button type="submit" class="btn btn-primary btn-block">
-        <!-- <b-spinner v-if="loading"></b-spinner> -->
-        OUI
-      </button>
-    </div>
-  </form>
-</template>
+              <div>
+                <button class="btn" @click="$refs.deleteHabitatModal.closeModal()">
+                  Annuler
+                </button>
+                <button type="submit" class="btn btn-primary btn-block">
+                  <!-- <b-spinner v-if="loading"></b-spinner> -->
+                  OUI
+                </button>
+              </div>
+            </form>
+          </template>
  
     </modal>
     
@@ -41,14 +41,18 @@
      
   </div>
 </template>
-
 <script>
+
+
+import { createNamespacedHelpers } from "vuex";
+import EditeHabitat from "../components/EditeHabitat.vue";
+const { mapActions } = createNamespacedHelpers("auth");
 export default {
   props: {
     habitat: {
       default: {},
       type: Object,
-      require: false,
+      require: false
     },
   },
 
@@ -58,8 +62,9 @@ export default {
     };
   },
   methods: {
-    async deleteHabitat() {
-      this.loading = true;
+    ...mapActions(["getHabitatsForHote"]),
+
+    async deleteHabitat() { 
       try {
         const response = await this.$axios.$delete(
           "/habitats/" + this.habitat._id
@@ -71,15 +76,10 @@ export default {
         }
       } catch (error) {
         console.log("ici", error);
-      } finally {
-        this.loading = false;
-        this.sendMessageToPerent();
+      } finally { 
+        this.getHabitatsForHote();
       }
-    },
-
-    sendMessageToPerent() {
-      this.$root.$emit("msg_from_child");
-    },
+    }, 
   },
 };
 </script>

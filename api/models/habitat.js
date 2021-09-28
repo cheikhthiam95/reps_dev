@@ -43,14 +43,15 @@ habitatSchemas.virtual('publishedStatus').get(function () {
 })
 
 habitatSchemas.virtual('reservationStatus').get(function () {
-  switch (this.status) {
-    case 1:
-      return "Publié";
-    case 2:
-      return "En cours de validation ";
-    default:
-      return "Non publié";
-  }
+ if(this.inBookingProcess){
+   return "Réservation demandée"
+ }else{
+   if(this.isBooked){
+    return "Réservé"
+   }else{
+     return "Libre"
+   }
+ }
 })
 habitatSchemas.plugin(require("mongoose-autopopulate"));
 module.exports = model("Habitat", habitatSchemas);

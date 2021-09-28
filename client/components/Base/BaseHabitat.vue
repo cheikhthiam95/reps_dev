@@ -29,14 +29,12 @@
 
 <script>
 import { createNamespacedHelpers } from "vuex";
-const { mapState, mapGetters } = createNamespacedHelpers("auth");
-const { mapActions } = createNamespacedHelpers("utils");
+const { mapState, mapGetters ,mapActions} = createNamespacedHelpers("auth"); 
 
 export default {
   computed: {
     ...mapGetters(["logged"]),
     ...mapState(["session"]),
-    ...mapActions(["setHabitat"]),
   },
   props: {
     habitat: {
@@ -63,17 +61,12 @@ export default {
   },
 
   methods: {
+    ...mapActions(["setCurrentHabitat"]),
+
      book(args) {
-      console.log("Le habita", { ...args });
-      // try {
-      //   const response = await this.setHabitat(1);
-      //   if (response) {
-          this.$store.commit("setCurrentHabitat", args);
-          this.$router.replace({ name: "book-habitatId" , params:{habitatId:args._id}});
-        // }
-      // } catch (error) {
-      //   console.log(error)
-      // }
+      console.log("Le habita", { ...args });setCurrentHabitat 
+          this.setCurrentHabitat(args);
+          this.$router.replace({ name: "book-habitatId" , params:{habitatId:args._id}}); 
     },
   },
 };

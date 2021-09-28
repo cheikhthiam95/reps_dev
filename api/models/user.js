@@ -12,7 +12,7 @@ const userSchemas = Schema({
   password: { ...requiredString, select: false },
   lastName: {...requiredString, required: true},
   firstName: {...requiredString, required: true},
-  addresse: {...requiredObject, required: true}, 
+  addresse: {...requiredObject, required: false}, 
   telephone: {...requiredString, required: true},
   avatar: {type: Object,
     required: false},

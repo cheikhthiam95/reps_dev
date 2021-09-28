@@ -44,51 +44,58 @@ const { mapGetters, mapState } = createNamespacedHelpers("auth");
 export default {
   computed: {
     ...mapGetters(["logged"]),
+    ...mapGetters(["currentHabitat"]),
     ...mapState(["session"]),
   },
   created() {
-    
-
-    if(this.$store.state.currentHabitat?._id){
-
-      console.log("On a le store")
-      this.bookingArgs = { ...this.$store.state.currentHabitat };
-      console.log(this.bookingArgs);
-    }else{
-      console.log("On va le cherhcher")
-
-      this.getCurrentHabitat().then(res =>{
-        this.$store.commit("setCurrentHabitat", res);
-      })
+    if (this.$store.state.currentHabitat?._id) {
+      console.log("On a le store");
+      this.habitatInfos = { ...this.currentHabitat };
+      console.log(this.habitatInfos);
+    } else {
+      console.log("On va le cherhcher");
+ 
     }
-     
   },
 
   data() {
     return {
       bookingArgs: {},
+      habitatInfos: {},
     };
   },
   methods: {
     async book() {
       if (this.logged) {
-        try {
-          const response = await this.$axios.$post(
-            "/reservations/newReservation/",
-            {
-              ...this.bookingArgs,
-              habitatId: this.bookingArgs._id,
-              tenantId: this.session.userId,
+        // if (!this.isItBusy()) {
+          try {
+            const response = await this.$axios.$post(
+              "/reservations/newReservation/",
+              {
+                ...this.bookingArgs, 
+                habitatId: this.habitatInfos._id,
+                tenantId: this.session.userId
+              }
+            );
+            if (response?._id) {
+              console.log("Naruto ", response);
+               this.$toast.success(
+          "Votre réservation a été entrégistrée avec success!"
+        );
+
+        this.setHabitStatus()
+
+
+              return response;
             }
-          );
-          if (response) {
-            console.log("Naruto ", response);
-            return response;
+          } catch (error) {
+            console.log("ici", error);
+                     this.$toast.error(
+          "Désolé une erreur technique s'est produit"
+        );
+            return [];
           }
-        } catch (error) {
-          console.log("ici", error);
-          return [];
-        }
+        // }
       } else {
         this.$toast.success(
           "Vous devez être connnecté pour faire une réservation !"
@@ -97,22 +104,69 @@ export default {
       }
     },
 
-    async getCurrentHabitat(){
-        try {
-          const response = await this.$axios.$get(
-            "/habitats/"+this.$route.params.habitatId
+    // async getCurrentHabitat() {
+    //   try {
+    //     const response = await this.$axios.$get(
+    //       "/habitats/" + this.$route.params.habitatId
+    //     );
+    //     if (response) {
+    //       console.log("Naruto ", response);
+    //       return response;
+    //     }
+    //   } catch (error) {
+    //     console.log("ici", error);
+    //     return [];
+    //   }
+    // },
+    async isItBusy() {
+      try {
+        const response = await this.$axios.$get(
+          "/reservations/findAllByMany/?habitatId=" +
+            this.$route.params.habitatId
+        );
+        if (response.length > 0) {
+          console.log("Naruto ", response);
+          this.$toast.error(
+            "Ce bien n'est pas disponible pour une réservation"
           );
-          if (response) {
-            console.log("Naruto ", response);
-            return response;
-          }
-        } catch (error) {
-          console.log("ici", error);
-          return [];
+          return true;
+        } else {
+          return false;
         }
-    }
+      } catch (error) {
+        console.log("ici", error);
+
+        return false; 
+      }
+    },    
+    
+    async setHabitStatus() {
+      try {
+   const response = await this.$axios.$put("/habitats/" + this.$route.params.habitatId, {
+            inBookingProcess:true
+          });
+
+          console.log(response,'Hbitat mis à jour avce coool')
+          return response
+
+        // if (response[0]?.habitatId) {
+        //   console.log("Naruto ", response);
+        //   this.$toast.error(
+        //     "Ce bien n'est pas disponible pour une réservation"
+        //   );
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+      } catch (error) {
+        console.log("ici", error);
+
+        return false;
+        return [];
+      }
+    },
   },
-
-
 };
 </script>
+
+
